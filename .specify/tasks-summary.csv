@@ -1,0 +1,23 @@
+id,title,estimate,dependencies,epic
+init-project,Inicializar repositorio y scaffolding,S,,MVP core
+db-migrations,Configurar esquema y migraciones (User/Habit/Entry/Backup),M,init-project,MVP core
+api-habits-crud,Implementar endpoints CRUD para /api/habits,M,db-migrations,MVP core
+api-entries-crud,Implementar endpoints para registros diarios,S,db-migrations,MVP core
+docker-compose-minimal,Crear docker-compose mínimo (app + db),M,init-project;db-migrations,MVP core
+frontend-basic,Primer UI React mínimo (listar/crear/marcar hábitos),S,api-habits-crud;api-entries-crud;docker-compose-minimal,Frontend & PWA
+pwa-setup,Integrar Vite + Service Worker (PWA),M,frontend-basic,Frontend & PWA
+offline-sync,Implementar cola local (IndexedDB) y reconciliación básica,M,pwa-setup;api-entries-crud,Frontend & PWA
+ui-stats-and-history,Panel de historial diario y rachas,M,frontend-basic;api-entries-crud,Frontend & PWA
+worker-scheduler,Implementar worker Node.js para scheduler (node-cron),M,docker-compose-minimal,Backups & Scheduler
+backup-script,Script de backup (mysqldump + gzip + checksum),M,worker-scheduler,Backups & Scheduler
+backup-ui-and-restore,UI/ops para listar backups y restauración manual,M,backup-script,Backups & Scheduler
+auth-local-optin,Implementar autenticación local opt-in (bcrypt + JWT/cookies),M,db-migrations,Security & Ops
+tls-and-reverse-proxy-doc,Documentar TLS y ejemplo con Caddy (o nginx + certbot),S,docker-compose-minimal,Security & Ops
+env-samples-and-secrets,Crear .env.sample y notas de manejo de secrets,S,init-project,Security & Ops
+dockerfiles-and-optimizations,Dockerfiles multi-stage y optimización de imágenes,M,init-project;frontend-basic,Packaging & Deploy
+docker-compose-prod,docker-compose producción (Caddy/nginx + app + db + worker),M,dockerfiles-and-optimizations;tls-and-reverse-proxy-doc,Packaging & Deploy
+unit-and-integration-tests,Añadir tests unitarios e integración básicos (Jest),M,api-habits-crud;api-entries-crud,QA & CI
+e2e-playwright,Configurar E2E (Playwright) para flujo crítico,M,frontend-basic;docker-compose-minimal,QA & CI
+ci-workflow,Crear GitHub Actions workflow mínimo (build + tests),S,unit-and-integration-tests,QA & CI
+quickstart-rpi-vps,Quickstart para RPi/VPS (docs/quickstart.md),M,docker-compose-prod;tls-and-reverse-proxy-doc,Docs & Release
+release-checklist,Preparar checklist de release y CHANGELOG,S,ci-workflow;unit-and-integration-tests,Docs & Release

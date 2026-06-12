@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: mariadb:10.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-password}
+      - MYSQL_DATABASE=${DB_NAME:-vitacora}
+    volumes:
+      - vitacora-db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+  app:
+    build: ./backend
+    env_file: .env
+    environment:
+      - PORT=8080
+      - DB_CLIENT=${DB_CLIENT:-sqlite3}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  vitacora-db-data:
+
+# Notes: mounts and further tuning can be added later

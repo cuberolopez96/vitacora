@@ -1,0 +1,11 @@
+{
+  "project_name": "Vitacora",
+  "version": "0.1.0",
+  "description": "Plataforma self-hosted para control de hábitos (seguimiento diario, estadísticas, recordatorios, exportación y backups automatizados).",
+  "author": "cuberolopez96",
+  "memory_dir": "memory",
+  "templates_dir": "templates",
+  "license": "MIT",
+  "scripts_dir": "scripts/powershell",
+  "feature_directory": ".specify"
+}
