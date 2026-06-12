@@ -1,0 +1,11 @@
+{
+  "name": "vitacora-worker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.25.0"
+  }
+}
