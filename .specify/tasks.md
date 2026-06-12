@@ -300,4 +300,5 @@ Todas las tareas son concisas y contienen rutas/artefactos sugeridos; pueden cop
 
 ## Completadas por agentes
 
+- [X] auth-local-optin — Implementar autenticación local opt‑in (bcrypt + JWT/cookies)
 - [X] backup-ui-and-restore — UI/ops para listar backups y restauración manual
