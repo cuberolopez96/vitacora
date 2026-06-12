@@ -295,3 +295,9 @@ Las siguientes tareas son prioridad para Sprint 1 (MVP core). Marcar y ejecutar 
 - Sprint 1 tareas: 6
 
 Todas las tareas son concisas y contienen rutas/artefactos sugeridos; pueden copiarse y pegarse como cuerpo de issue. Si desea que convierta cada tarea en un issue markdown completo (template con checklist, pasos de verificación y comandos), puedo generarlos uno por uno.
+
+---
+
+## Completadas por agentes
+
+- [X] env-samples-and-secrets — Crear .env.sample y notas de manejo de secrets
