@@ -1,0 +1,43 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Backend data and env
+backend/data/
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+**/docker-compose.override.yml
+*.env
+
+# Temporary
+*.tmp
+*.swp
+
+# Spec artifacts
+.specify/*.bak
+
+# Coverage
+coverage/
