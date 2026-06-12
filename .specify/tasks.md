@@ -301,3 +301,7 @@ Todas las tareas son concisas y contienen rutas/artefactos sugeridos; pueden cop
 ## Completadas por agentes
 
 - [X] dockerfiles-and-optimizations — Dockerfiles multi-stage y optimización de imágenes
+- [X] env-samples-and-secrets — Crear .env.sample y notas de manejo de secrets
+- [X] tls-and-reverse-proxy-doc — Documentar TLS y ejemplo con Caddy (o nginx + certbot)
+- [X] auth-local-optin — Implementar autenticación local opt‑in (bcrypt + JWT/cookies)
+- [X] backup-ui-and-restore — UI/ops para listar backups y restauración manual

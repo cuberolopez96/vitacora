@@ -6,10 +6,14 @@ const fp = require('fastify-plugin');
 
 // DB plugin (Knex) - attaches knex instance as fastify.knex
 fastify.register(require('./plugins/db'));
+// Auth plugin (opt-in scaffold) - sets fastify.authEnabled and fastify.verifyAuth
+fastify.register(require('./plugins/auth'));
 
 // Register routes
 fastify.register(require('./routes/habits'), { prefix: '/api' });
 fastify.register(require('./routes/entries'), { prefix: '/api' });
+// Backups API (scaffold): lists available backups and provides download endpoint
+fastify.register(require('./routes/backups'), { prefix: '/api' });
 
 // Health endpoint
 fastify.get('/api/healthz', require('./health'));
