@@ -255,6 +255,14 @@ Las siguientes tareas son prioridad para Sprint 1 (MVP core). Marcar y ejecutar 
 - [X] docker-compose-minimal — Crear docker-compose mínimo (M)
 - [X] frontend-basic — Primer UI React mínimo (S)
 
+## Automated progress (agent run 2026-06-13)
+
+- [X] pwa-setup — Integrar Vite + PWA y configurar Service Worker
+- [X] offline-sync — Implementar cola local y reconciliación básica
+- [X] ui-stats-and-history — Añadir utilitarios de estadísticas (streaks, frecuencia)
+- [X] worker-scheduler — Añadir worker ligero con /healthz
+- [X] backup-script — Añadir scripts/backup.sh y scripts/backup.ps1
+
 ---
 
 ## Dependencias y orden de ejecución (resumen)
