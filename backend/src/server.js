@@ -14,6 +14,8 @@ fastify.register(require('./routes/habits'), { prefix: '/api' });
 fastify.register(require('./routes/entries'), { prefix: '/api' });
 // Backups API (scaffold): lists available backups and provides download endpoint
 fastify.register(require('./routes/backups'), { prefix: '/api' });
+// Export API (CSV/JSON)
+fastify.register(require('./routes/export'), { prefix: '/api' });
 
 // Health endpoint
 fastify.get('/api/healthz', require('./health'));
