@@ -17,5 +17,13 @@ Restore guidance (manual):
   - sqlite3 mydb.sqlite < sample-backup.sql
 - For MySQL/MariaDB the production backup script should use mysqldump; adapt the command per DB engine.
 
+Restore scripts added (scaffold):
+- scripts/restore.sh — POSIX shell helper to restore .sqlite.gz or .sql.gz files
+- scripts/restore.ps1 — PowerShell equivalent for Windows
+
+Examples:
+- SQLite: RESTORE_FILE=./backups/vitacora-backup-...sqlite.gz ./scripts/restore.sh
+- MySQL: RESTORE_FILE=./backups/vitacora-backup-....sql.gz MYSQL_HOST=127.0.0.1 MYSQL_USER=root MYSQL_PASSWORD=pass DB_NAME=vitacora ./scripts/restore.sh
+
 Notes:
-- This is scaffold work intended to provide UI and API endpoints to list and download backups. Implementing automated restore and DB-specific backup formats should be done in a follow-up task.
+- These scripts are minimal, intended for manual operator use. They assume gzip/mysql/sqlite3 are available in PATH and that the restore target is correct. Review and adapt for production (backups verification, transactional restore, downtime windows) as follow-up work.
