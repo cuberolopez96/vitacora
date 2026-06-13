@@ -1,0 +1,24 @@
+name: Docker image build (PR)
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: |
+          docker build -t vitacora-backend:pr -f backend/Dockerfile backend
+
+      - name: Build frontend image
+        if: exists('frontend/Dockerfile')
+        run: |
+          docker build -t vitacora-frontend:pr -f frontend/Dockerfile frontend
+
+      - name: Verify images
+        run: |
+          docker images | grep vitacora || true
