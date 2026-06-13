@@ -275,9 +275,9 @@ Decision: Stack principal
 - Alternativas: Go (binario único, menor consumo) — buena alternativa si se desea binario único; Python (FastAPI) — igualmente válido si preferencia del mantenedor.
 
 Decision: Base de datos
-- Elegido: MySQL como motor por defecto; en RPi usar MariaDB (compatibilidad/paquetes).
-- Racional: demanda del proyecto (usuario indicó MySQL), replicable en VPS; se proveen scripts para instalar MariaDB en RPi y para conversiones desde SQLite.
-- Alternativas: SQLite para instalaciones personales ultra‑ligeras (documentado como opción de compatibilidad).
+- Elegido: SQLite como motor por defecto para instalaciones personales; MySQL/MariaDB opcional para despliegues multiusuario y escalables.
+- Racional: SQLite es ligero, fácil de administrar en RPi/VPS y cumple los requisitos del mantenedor único para el MVP; se proveerán scripts y documentación para migración a MySQL/MariaDB cuando sea necesario.
+- Alternativas: MySQL/MariaDB para despliegues multiusuario y producción; documentar diferencias y pasos de migración.
 
 Decision: Scheduler/recordatorios
 - Elegido: Worker Node.js ligero usando node-cron en contenedor separado.
