@@ -55,14 +55,18 @@ Criterios de aceptación (medibles)
 ----------------------------------
 - Un mantenedor puede desplegar la aplicación en una Raspberry Pi (4/2GB) o VPS con 2GB RAM siguiendo la guía en ≤60 minutos.
 - Usuarios pueden completar el registro de un hábito y marcarlo en ≤30 segundos desde la pantalla principal.
-- Al menos el 95% de las exportaciones (CSV/JSON) generan archivos válidos que incluyen todo el historial solicitado.
+- Exportaciones: Las exportaciones CSV/JSON deberán validarse mediante tests automatizados:
+  - Implementar suite de integración/E2E que valide export sobre datasets de prueba (ej. fixtures/exports/*) y confirme formatos, encabezados y codificación.
+  - Criterio de aceptación verificable: CI incluye job que ejecuta export sobre dataset de ejemplo (p. ej. 1k registros sanitizados) y falla si el archivo resultante no cumple el esquema esperado. (Objetivo operativo: 100% de casos de prueba automáticos válidos.)
 - Backups automáticos aparecen en la ubicación configurada y una restauración completa se puede completar en ≤10 minutos para una base de datos de 50MB.
 
 Entidades clave (datos)
 -----------------------
 - Usuario (opcional): id, nombre, correo (opcional), preferencia de autenticación
 - Hábito: id, nombre, descripción, periodicidad, recordatorio (hora/fecha), metadata
-- Registro diario: id, fecha, estado (completado/no), nota
+- Registro diario (Entry): id, fecha, estado ( campo técnico: `status` — enum: `completed` | `missed` | `skip` ), nota.
+  - Notas: en la UI los valores se muestran como "completado" / "omitido" / "no aplica"; la API y la BD usarán los tokens estables anteriores (usar english tokens por compatibilidad con migraciones y tests).
+  - Regla de unicidad: (habit_id, date) unique
 - Backup: timestamp, origen, tamaño, checksum
 
 Decisiones técnicas recomendadas (orientativas)

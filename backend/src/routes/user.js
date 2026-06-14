@@ -7,7 +7,7 @@ const { exportUserData, deleteUserData } = require('../controllers/userControlle
 
 module.exports = async function (fastify, opts) {
   // Export user data as JSON (or change to stream/zip in production)
-  fastify.get('/api/me/export', async function (request, reply) {
+  fastify.get('/me/export', async function (request, reply) {
     await fastify.verifyAuth(request);
     const userId = (request.user && request.user.sub) || (request.user && request.user.userId) || (request.user && request.user.id) || 'local';
     if (!userId) return reply.code(401).send({ error: 'Unauthorized' });
@@ -17,7 +17,7 @@ module.exports = async function (fastify, opts) {
   });
 
   // Delete or anonymize user data
-  fastify.delete('/api/me', async function (request, reply) {
+  fastify.delete('/me', async function (request, reply) {
     await fastify.verifyAuth(request);
     const userId = (request.user && request.user.sub) || (request.user && request.user.userId) || (request.user && request.user.id) || 'local';
     if (!userId) return reply.code(401).send({ error: 'Unauthorized' });

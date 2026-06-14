@@ -174,12 +174,12 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 ## Epic: Security & Ops
 
 13) id: auth-local-optin
-    - título: Implementar autenticación local opt‑in (bcrypt + JWT/cookies)
-    - estimate: M (8–16h)
-    - dependencias: db-migrations
-    - responsable: cuberolopez96
-    - criterio de aceptación: Activar auth obliga a login; desactivar permite modo single-user (configurable en .env).
-    - notas: Añadir middleware auth en backend/src/middleware/auth.js; usar bcrypt y emitir JWT o cookie firmada.
+  - título: Implementar autenticación local opt‑in (bcrypt + sesiones por cookie segura)
+  - estimate: M (8–16h)
+  - dependencias: db-migrations
+  - responsable: cuberolopez96
+  - criterio de aceptación: soporte para activar auth vía .env; cuando está activada, acceso requiere login; usar sesiones basadas en cookie segura (httpOnly, Secure, SameSite=Lax) con storage servidor (session store) o JWT con refresh token si se decide exponer API a terceros. Documentar CSRF protections y política de expiración/refresh.
+  - notas: Recomendación inicial: cookie-session + CSRF token (más compatible con navegadores/PWA). Documentar alternativa JWT en RFC si se requiere acceso API de terceros.
 
 14) id: tls-and-reverse-proxy-doc
     - título: Documentar TLS y ejemplo con Caddy (o nginx + certbot)

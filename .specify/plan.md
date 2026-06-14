@@ -312,13 +312,15 @@ Entidades principales:
   - reminder_time (time, nullable)
   - metadata (json, nullable)
   - created_at, updated_at
-- Entry (Registro diario)
+- Entry (Registro diario): id, fecha, estado ( campo técnico: `status` — enum: `completed` | `missed` | `skip` ), note
   - id (UUID)
   - habit_id (UUID)
   - date (date)
-  - status (enum: completed/missed/skip)
+  - status (enum: completed | missed | skip)
   - note (text nullable)
   - created_at, updated_at
+  - Notas: en la UI los valores se muestran como "completado" / "omitido" / "no aplica"; la API y la BD usarán los tokens estables anteriores (usar english tokens por compatibilidad con migraciones y tests).
+  - Regla de unicidad: (habit_id, date) unique
 - Backup
   - id (UUID)
   - timestamp (datetime)
@@ -371,9 +373,11 @@ Ejemplo (fragmento que debes insertar entre markers):
 
 Gates y Constitution Check
 --------------------------
-- GATE: Debe confirmarse motor de BD (resuelto: MySQL/MariaDB).
+- GATE: Confirmar motor de BD por defecto para el MVP.
+  - DECISIÓN PROPUESTA: Mantener **SQLite** como motor por defecto para instalaciones personales y Raspberry Pi (valor por defecto para v0.1.0). **MySQL/MariaDB** se soporta y documenta como opción para despliegues multiusuario, pero no será el motor por defecto del MVP.
+  - RAZÓN: Alineamiento con la Constitución (simplicidad/ligereza) y requisitos de despliegue en hardware limitado.
+  - Si se opta por cambiar el motor por defecto a MySQL/MariaDB, abrir un RFC que documente impacto en memoria, imágenes, tests y migraciones, y actualizar este plan.
 - GATE: Debe aprobarse el uso de Node.js + React (resuelto en Research).
-- Si alguna puerta queda violada por limitaciones del mantenedor o hardware, marcar y justificar (complejidad tracking).
 
 Tareas siguientes y tareas no incluidas (scope)
 ----------------------------------------------
