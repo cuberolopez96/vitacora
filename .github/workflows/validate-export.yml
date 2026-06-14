@@ -23,8 +23,8 @@ jobs:
           npm install --no-audit --no-fund
       - name: Prepare DB directory
         run: |
-          mkdir -p backend/data
-          touch backend/data/vitacora.sqlite
+          mkdir -p data
+          touch data/vitacora.sqlite
       - name: Run migrations
         run: |
           cd backend
