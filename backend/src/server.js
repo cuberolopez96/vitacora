@@ -16,6 +16,8 @@ fastify.register(require('./routes/entries'), { prefix: '/api' });
 fastify.register(require('./routes/backups'), { prefix: '/api' });
 // Export API (CSV/JSON)
 fastify.register(require('./routes/export'), { prefix: '/api' });
+// Auth routes (login/logout)
+fastify.register(require('./routes/auth'));
 
 // Health endpoint
 fastify.get('/api/healthz', require('./health'));
