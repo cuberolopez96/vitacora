@@ -116,10 +116,12 @@ Sprint 5 — Backups y scheduler (worker)
 
 Sprint 6 — Restore, documentación ops y compatibilidad RPi
 - 6.1 Flujo de restauración (M, 10h)
-  - Aceptación: restaurar backup en entorno limpio y validar datos
+  - Aceptación: restaurar backup en entorno limpio y validar datos; además ejecutar una prueba de rendimiento de restauración usando un dump/snapshot sanitizado de ~50MB y verificar que la restauración completa en ≤10 minutos en un entorno limpio (documentar hardware/env utilizado).
 - 6.2 Documentación específica RPi/VPS (M, 12h)
   - Aceptación: quickstart RPi, recomendaciones swap/zram, guardar en docs/quickstart.md
 - 6.3 Test de carga mínima y validación en RPi (S, 6h)
+- 6.4 Backup restore performance (S, 3–6h)
+  - Aceptación: script `scripts/test_restore_performance.sh` ejecuta backup+restore en un fixture de ~50MB y falla si el tiempo excede 10 minutos; generar informe con tiempos y resultados.
   - Aceptación: ejemplo de despliegue en RPi con 2GB y comprobación básica
 
 Sprint 7 — Autenticación local y seguridad
