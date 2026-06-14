@@ -1,0 +1,30 @@
+name: Restore performance test (stub)
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  restore-perf:
+    name: Restore performance (stub)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure script is executable
+        run: chmod +x ./scripts/test_restore_performance.sh || true
+
+      - name: Run restore performance test (stub)
+        run: |
+          set -e
+          FIXTURE=tests/fixtures/50MB.sqlite
+          if [ -f "$FIXTURE" ]; then
+            echo "Fixture found: $FIXTURE"
+            echo "Running restore performance script with a placeholder restore command (cp) — replace with real restore in CI when fixture and environment are available."
+            ./scripts/test_restore_performance.sh "$FIXTURE" "cp $FIXTURE restored.sqlite"
+          else
+            echo "Fixture $FIXTURE not found — skipping restore performance test (placeholder)."
+          fi
