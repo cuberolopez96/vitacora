@@ -159,7 +159,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - dependencias: init-project, db-migrations
     - responsable: cuberolopez96
     - criterio de aceptación: Crear tabla audit_logs con timestamp, actor, action, resource_id y metadata; exponer endpoint /api/audit?since=&limit= con permisos admin/maintainer; proveer export CSV/JSON y pruebas que validen la grabación de eventos críticos (create/update/delete user, backups, restores).
-    - notas: Definir retention policy en docs; incluir exportación segura para mantenimiento.
+    - notas: Definir retention policy en docs; incluir exportación segura para mantenimiento. Migración: migrations/0001_create_audit_logs.sql
 
 12) id: backup-ui-and-restore
     - título: UI/ops para listar backups y restauración manual
