@@ -34,11 +34,12 @@ Fuera de alcance (MVP)
 Requisitos clave (testables)
 ----------------------------
 1. Despliegue: Se puede ejecutar con Docker Compose en un VPS o Raspberry Pi con 2GB RAM.
-2. Offline: La PWA permite registrar hábitos sin conexión y sincronizar cuando hay conectividad.
+2. Offline: La PWA permite registrar hábitos sin conexión y sincronizar cuando haya conectividad.
 3. Exportación: Usuarios pueden exportar todo su historial como CSV y JSON desde la interfaz.
-4. Backups: El sistema realiza backups automáticos programados que pueden descargarse o almacenarse localmente.
+4. Backups: El sistema realiza backups automáticos programados que pueden descargarse o almacenarse localmente. Debe soportar procedimientos de backup/restore para SQLite (archivo .db + WAL) y para MySQL/MariaDB (mysqldump).
 5. Seguridad: TLS para comunicación; opción para cifrado en reposo y autenticación activable.
 6. Peso y dependencias: Instalación ligera; seleccionar por defecto una base de datos embebida (SQLite) para instalaciones personales.
+7. Eliminación de datos: Los usuarios deben poder solicitar y ejecutar la eliminación irreversible de sus datos personales (API/endpoint), y esta operación deberá estar cubierta por pruebas y por logs de auditoría.
 
 MVP Checklist
 -------------
