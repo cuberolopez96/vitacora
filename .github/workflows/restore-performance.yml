@@ -2,6 +2,8 @@ name: Restore performance test (stub)
 
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: "0 3 * * *"  # daily at 03:00 UTC
   pull_request:
     types: [opened, synchronize, reopened]
 
