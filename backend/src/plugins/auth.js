@@ -12,7 +12,7 @@ module.exports = fp(async function (fastify, opts) {
     if (strategy === 'jwt') {
       // Register fastify-jwt with JWT_SECRET
       const jwtSecret = process.env.JWT_SECRET || 'dev-secret';
-      fastify.register(require('fastify-jwt'), { secret: jwtSecret });
+            fastify.register(require('@fastify/jwt'), { secret: jwtSecret });
 
       // verifyAuth uses request.jwtVerify() provided by fastify-jwt and sets request.user
       fastify.decorate('verifyAuth', async function (request) {
