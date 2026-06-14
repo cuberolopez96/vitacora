@@ -19,6 +19,9 @@ fastify.register(require('./routes/export'), { prefix: '/api' });
 // Auth routes (login/logout)
 fastify.register(require('./routes/auth'));
 
+// User routes (export/delete)
+fastify.register(require('./routes/user'), { prefix: '/api' });
+
 // Health endpoint
 fastify.get('/api/healthz', require('./health'));
 
