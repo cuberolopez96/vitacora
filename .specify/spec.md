@@ -62,7 +62,9 @@ Entidades clave (datos)
 -----------------------
 - Usuario (opcional): id, nombre, correo (opcional), preferencia de autenticación
 - Hábito: id, nombre, descripción, periodicidad, recordatorio (hora/fecha), metadata
-- Registro diario: id, fecha, estado (completado/no), nota
+- Registro diario (Entry): id, fecha, estado ( campo técnico: `status` — enum: `completed` | `missed` | `skip` ), nota.
+  - Notas: en la UI los valores se muestran como "completado" / "omitido" / "no aplica"; la API y la BD usarán los tokens estables anteriores (usar english tokens por compatibilidad con migraciones y tests).
+  - Regla de unicidad: (habit_id, date) unique
 - Backup: timestamp, origen, tamaño, checksum
 
 Decisiones técnicas recomendadas (orientativas)
