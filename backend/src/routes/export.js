@@ -7,7 +7,7 @@ module.exports = async function (fastify, opts) {
     const rows = await knex('entries').select('*').orderBy('date', 'desc');
 
     if (!format || format === 'json') {
-      return { data: rows };
+      return { exported_at: new Date().toISOString(), data: { entries: rows } };
     }
 
     if (format === 'csv') {
