@@ -138,6 +138,13 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Ejecutar script crea backup comprimido con checksum y lo lista en tabla backups; soporta el motor de BD configurado (SQLite o MySQL/MariaDB).
     - notas: scripts/backup.sh (bash) y scripts/backup.ps1 (opcional). Incluir ejemplos para MySQL (`docker exec mysql_container mysqldump ...`) y para SQLite (hacer WAL checkpoint y uso de `sqlite3 db.sqlite .backup backup.sqlite` o `docker cp` del archivo DB), además de instrucción para asegurar consistencia en contenedores.
 
+12) id: backup-restore-performance
+    - título: Prueba de rendimiento de restauración (50MB)
+    - estimate: S (3–6h)
+    - dependencias: backup-script, backup-ui-and-restore
+    - responsable: cuberolopez96
+    - criterio de aceptación: Ejecutar un ciclo de backup+restore usando un dump/snapshot de ~50MB (sanitizado) completa la restauración en ≤10 minutos en un entorno limpio (local CI runner or RPi-like VM) y generar un informe con tiempos; añadir script `scripts/test_restore_performance.sh` que retorna exit code != 0 si excede el umbral.
+    - notas: Use sanitized sample DB (50MB) in tests/fixtures; document steps to reproduce y agregar job opcional en CI para ejecuciones programadas o on-demand.
 14) id: user-data-deletion
     - título: Endpoint para eliminación y exportación de datos personales
     - estimate: M (8–16h)
