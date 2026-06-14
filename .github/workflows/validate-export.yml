@@ -1,0 +1,39 @@
+name: Validate export (smoke)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install jq (for JSON checks)
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Install backend deps
+        run: |
+          cd backend
+          npm ci
+      - name: Run migrations
+        run: |
+          cd backend
+          npm run migrate
+      - name: Start backend (dev)
+        run: |
+          cd backend
+          NODE_ENV=development AUTH_ENABLED=false node src/server.js &
+          sleep 5
+      - name: Validate export endpoint
+        run: |
+          set -e
+          # Try export as JSON
+          curl -f -sS http://localhost:8080/api/export -o /tmp/export.json
+          # Ensure JSON has exported_at and data keys
+          cat /tmp/export.json | jq -e '.exported_at and .data' >/dev/null
