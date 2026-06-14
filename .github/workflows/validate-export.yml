@@ -20,7 +20,7 @@ jobs:
       - name: Install backend deps
         run: |
           cd backend
-          npm ci
+          npm install --no-audit --no-fund
       - name: Run migrations
         run: |
           cd backend
