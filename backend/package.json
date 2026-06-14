@@ -14,12 +14,13 @@
   "dependencies": {
     "fastify": "^4.25.0",
     "fastify-plugin": "^4.5.0",
+    "fastify-jwt": "^7.8.0",
     "knex": "^2.5.1",
     "sqlite3": "^5.1.6",
     "mysql2": "^3.2.0",
     "dotenv": "^16.0.0",
-        "jsonwebtoken": "^9.0.0"
-      },
+    "jsonwebtoken": "^9.0.0"
+  },
   "engines": {
     "node": ">=18"
   }
