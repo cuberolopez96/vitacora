@@ -312,13 +312,15 @@ Entidades principales:
   - reminder_time (time, nullable)
   - metadata (json, nullable)
   - created_at, updated_at
-- Entry (Registro diario)
+- Entry (Registro diario): id, fecha, estado ( campo técnico: `status` — enum: `completed` | `missed` | `skip` ), note
   - id (UUID)
   - habit_id (UUID)
   - date (date)
-  - status (enum: completed/missed/skip)
+  - status (enum: completed | missed | skip)
   - note (text nullable)
   - created_at, updated_at
+  - Notas: en la UI los valores se muestran como "completado" / "omitido" / "no aplica"; la API y la BD usarán los tokens estables anteriores (usar english tokens por compatibilidad con migraciones y tests).
+  - Regla de unicidad: (habit_id, date) unique
 - Backup
   - id (UUID)
   - timestamp (datetime)
