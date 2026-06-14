@@ -107,8 +107,10 @@ Sprint 5 — Backups y scheduler (worker)
   - Artefacto: worker container usando node-cron con endpoint de salud
   - Aceptación: programar y ejecutar tareas de recordatorio y backups
 - 5.2 Script de backup (M, 12h)
-  - Estrategia: mysqldump + gzip + checksum + rotación (7 backups por defecto)
-  - Aceptación: ejecutar script crea backup verificable
+  - Estrategia: Proveer procedimientos para ambos escenarios:
+    - MySQL/MariaDB: mysqldump + gzip + checksum + rotación configurable (7 backups por defecto).
+    - SQLite (instalación por defecto): realizar checkpoint/WAL-safe copies del archivo .db o usar `sqlite3 .backup` para snapshots; comprimir y validar checksum; documentar pasos para contenedores.
+  - Aceptación: ejecutar script crea backup verificable para la BD configurada (SQLite o MySQL) y documentar comandos de restauración.
 - 5.3 UI/ops: gestión de backups y restauración (M, 12h)
   - Aceptación: UI o instrucción para descargar y restaurar backup en host de prueba
 

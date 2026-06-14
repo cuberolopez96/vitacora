@@ -131,12 +131,28 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - notas: Contenedor separado worker/, añadir servicio en docker-compose; usar node-cron y health endpoint.
 
 11) id: backup-script
-    - título: Script de backup (mysqldump + gzip + checksum)
+    - título: Script de backup (soporta SQLite y MySQL/MariaDB)
     - estimate: M (8–16h)
     - dependencias: worker-scheduler
     - responsable: cuberolopez96
-    - criterio de aceptación: Ejecutar script crea backup comprimido con checksum y lo lista en tabla backups.
-    - notas: scripts/backup.sh (bash) y scripts/backup.ps1 (opcional). Incluir ejemplo `docker exec mysql_container mysqldump ...`.
+    - criterio de aceptación: Ejecutar script crea backup comprimido con checksum y lo lista en tabla backups; soporta el motor de BD configurado (SQLite o MySQL/MariaDB).
+    - notas: scripts/backup.sh (bash) y scripts/backup.ps1 (opcional). Incluir ejemplos para MySQL (`docker exec mysql_container mysqldump ...`) y para SQLite (hacer WAL checkpoint y uso de `sqlite3 db.sqlite .backup backup.sqlite` o `docker cp` del archivo DB), además de instrucción para asegurar consistencia en contenedores.
+
+14) id: user-data-deletion
+    - título: Endpoint para eliminación y exportación de datos personales
+    - estimate: M (8–16h)
+    - dependencias: db-migrations, api-habits-crud
+    - responsable: cuberolopez96
+    - criterio de aceptación: Implementar DELETE /api/users/{id} (o /api/me) que realice eliminación irreversible de los datos personales del usuario (o un flujo de 'anonymize' en instalaciones single-user), y GET /api/users/{id}/export que entrega los datos en JSON/ZIP; incluir tests de integración y documentación en docs/privacy.md.
+    - notas: Registrar la operación en el log de auditoría; confirmar backups/documentación del procedimiento.
+
+15) id: audit-logs
+    - título: Implementar audit logs para operaciones críticas
+    - estimate: M (8–16h)
+    - dependencias: init-project, db-migrations
+    - responsable: cuberolopez96
+    - criterio de aceptación: Crear tabla audit_logs con timestamp, actor, action, resource_id y metadata; exponer endpoint /api/audit?since=&limit= con permisos admin/maintainer; proveer export CSV/JSON y pruebas que validen la grabación de eventos críticos (create/update/delete user, backups, restores).
+    - notas: Definir retention policy en docs; incluir exportación segura para mantenimiento.
 
 12) id: backup-ui-and-restore
     - título: UI/ops para listar backups y restauración manual
