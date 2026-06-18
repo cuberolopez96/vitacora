@@ -21,23 +21,53 @@ jobs:
         run: |
           cd backend
           npm install --no-audit --no-fund
-      - name: Run backend tests
+
+      - name: Prepare env and DB (for sqlite)
+        run: |
+          # Ensure root and backend env files exist
+          cp .env.sample .env || true
+          cp .env.sample backend/.env || true
+
+          # Ensure SQLite storage dirs exist and files that knex expects
+          mkdir -p data backend/data
+          if [ ! -f data/vitacora.sqlite ]; then
+            touch data/vitacora.sqlite
+          fi
+          if [ ! -f backend/data/test-ci.sqlite ]; then
+            touch backend/data/test-ci.sqlite
+          fi
+
+          # Configure env files to use sqlite
+          sed -i 's/^DB_CLIENT=.*/DB_CLIENT=sqlite3/' .env || true
+          sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=./data/vitacora.sqlite|' .env || true
+          sed -i 's/^DB_CLIENT=.*/DB_CLIENT=sqlite3/' backend/.env || true
+          sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=./data/test-ci.sqlite|' backend/.env || true
+
+          echo "Files created:"
+          ls -la data || true
+          ls -la backend/data || true
+
+      - name: Show knex filename (debug)
         run: |
           cd backend
-          npm test
-      - name: Prepare DB directory
-        run: |
-          mkdir -p data
-          touch data/vitacora.sqlite
+          node -e "console.log(require('./knexfile').development.connection.filename)"
+
       - name: Run migrations
         run: |
           cd backend
           npm run migrate
+
+      - name: Run backend tests
+        run: |
+          cd backend
+          npm test
+
       - name: Start backend (dev)
         run: |
           cd backend
           NODE_ENV=development AUTH_ENABLED=false node src/server.js &
           sleep 5
+
       - name: Validate export endpoint
         run: |
           set -e
