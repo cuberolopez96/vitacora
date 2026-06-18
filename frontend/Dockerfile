@@ -4,7 +4,7 @@
 FROM node:18-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN npm ci --silent
+RUN if [ -f package-lock.json ]; then npm ci --silent; else npm install --no-audit --no-fund --silent; fi
 COPY . .
 RUN npm run build
 
