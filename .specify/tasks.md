@@ -165,6 +165,14 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Crear tabla audit_logs con timestamp, actor, action, resource_id y metadata; exponer endpoint /api/audit?since=&limit= con permisos admin/maintainer; proveer export CSV/JSON y pruebas que validen la grabación de eventos críticos (create/update/delete user, backups, restores).
     - notas: Definir retention policy en docs; incluir exportación segura para mantenimiento. Migración: migrations/0001_create_audit_logs.sql
 
+16) id: logging-and-metrics
+    - título: Implementar logging estructurado y métricas básicas
+    - estimate: M (8–16h)
+    - dependencias: init-project
+    - responsable: cuberolopez96
+    - criterio de aceptación: Implementar /metrics endpoint que exponga métricas Prometheus básicas (uptime, requests_total, request_duration_seconds bucketed) y garantizar que la aplicación emita logs estructurados en JSON con fields: timestamp, level, component, message, request_id (cuando aplique). Añadir documentación de ingest (ejemplo Prometheus scrape config y Grafana dashboard minimal) y pruebas de integración que validen /metrics responde y que los logs incluyen campos mínimos en stdout.
+    - notas: Preferir prom-client (Node) y consola JSON ligera; documentar rotación de logs y opcional integración con pushgateway o archivo local para RPi.
+
 12) id: backup-ui-and-restore
     - título: UI/ops para listar backups y restauración manual
     - estimate: M (8–16h)
