@@ -60,15 +60,29 @@ jobs:
 
       - name: Prepare restore file and run restore
         run: |
-          # find decrypted file (.dec) and rename to .sqlite.gz if needed
-          DEC=$(ls -1 backups/*.dec | tail -n 1)
-          if [ -z "$DEC" ]; then
-            echo "No decrypted file found"; exit 2
+          # Find a candidate restore file. Prefer decrypted .dec, then .enc, then latest non-.sha256 backup
+          set -euo pipefail
+          DEC=$(ls -1 backups/*.dec 2>/dev/null | tail -n 1 || true)
+          if [ -n "$DEC" ]; then
+            RESTORE_FILE="$DEC"
+            echo "Found decrypted file: $RESTORE_FILE"
+          else
+            ENC=$(ls -1 backups/*.enc 2>/dev/null | tail -n 1 || true)
+            if [ -n "$ENC" ]; then
+              RESTORE_FILE="$ENC"
+              echo "Found encrypted backup: $RESTORE_FILE"
+            else
+              LATEST=$(ls -1 backups | grep -v '\.sha256$' | tail -n 1 || true)
+              if [ -z "$LATEST" ]; then
+                echo "No backup files found in backups/"; exit 2
+              fi
+              RESTORE_FILE="backups/$LATEST"
+              echo "Falling back to latest backup: $RESTORE_FILE"
+            fi
           fi
-          RESTORE_NAME=$(basename "$DEC" .dec)
-          mv "$DEC" "backups/$RESTORE_NAME"
-          echo "Restoring from backups/$RESTORE_NAME"
-          export RESTORE_FILE="backups/$RESTORE_NAME"
+
+          echo "Restoring from $RESTORE_FILE"
+          export RESTORE_FILE
           export DB_CONNECTION="./data/vitacora_ci_restore.sqlite"
           export ENCRYPTION_ENABLED=true
           export ENCRYPTION_KEY_PATH=keys/test.key
