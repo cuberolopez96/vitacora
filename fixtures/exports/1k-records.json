@@ -4,43 +4,6999 @@
     "habitId": "habit-1",
     "date": "2026-01-01",
     "status": "completed",
-    "note": "sample record 1"
-  },
-  {
-    "userId": "user-1",
-    "habitId": "habit-2",
-    "date": "2026-01-02",
-    "status": "missed",
-    "note": "sample record 2"
+    "note": "auto 0"
   },
   {
     "userId": "user-2",
-    "habitId": "habit-3",
+    "habitId": "habit-2",
     "date": "2026-01-02",
-    "status": "completed",
-    "note": "sample record 3"
+    "status": "missed",
+    "note": "auto 1"
   },
   {
     "userId": "user-3",
-    "habitId": "habit-1",
+    "habitId": "habit-3",
     "date": "2026-01-03",
-    "status": "completed",
-    "note": "sample record 4"
+    "status": "skip",
+    "note": "auto 2"
   },
   {
     "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 3"
+  },
+  {
+    "userId": "user-5",
     "habitId": "habit-5",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 4"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 5"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 6"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 7"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 8"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 9"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 10"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 11"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 12"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 13"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 14"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 15"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 16"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 17"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 18"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 19"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 20"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 21"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 22"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 23"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 24"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 25"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 26"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 27"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 28"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 29"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 30"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 31"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 32"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 33"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 34"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 35"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 36"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 37"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 38"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 39"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 40"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 41"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 42"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 43"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 44"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 45"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 46"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 47"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 48"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 49"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 50"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 51"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 52"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 53"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 54"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 55"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 56"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 57"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 58"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
     "date": "2026-01-04",
     "status": "skip",
-    "note": "sample record 5"
+    "note": "auto 59"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 60"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 61"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 62"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 63"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 64"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 65"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 66"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 67"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 68"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 69"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 70"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 71"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 72"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 73"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 74"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 75"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 76"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 77"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 78"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 79"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 80"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 81"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 82"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 83"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 84"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 85"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 86"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 87"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 88"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 89"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 90"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 91"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 92"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 93"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 94"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 95"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 96"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 97"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 98"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 99"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 100"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 101"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 102"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 103"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 104"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 105"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 106"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 107"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 108"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 109"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 110"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 111"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 112"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 113"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 114"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 115"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 116"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 117"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 118"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 119"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 120"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 121"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 122"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 123"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 124"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 125"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 126"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 127"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 128"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 129"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 130"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 131"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 132"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 133"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 134"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 135"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 136"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 137"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 138"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 139"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 140"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 141"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 142"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 143"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 144"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 145"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 146"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 147"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 148"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 149"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 150"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 151"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 152"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 153"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 154"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 155"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 156"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 157"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 158"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 159"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 160"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 161"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 162"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 163"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 164"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 165"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 166"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 167"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 168"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 169"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 170"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 171"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 172"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 173"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 174"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 175"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 176"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 177"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 178"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 179"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 180"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 181"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 182"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 183"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 184"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 185"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 186"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 187"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 188"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 189"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 190"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 191"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 192"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 193"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 194"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 195"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 196"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 197"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 198"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 199"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 200"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 201"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 202"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 203"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 204"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 205"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 206"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 207"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 208"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 209"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 210"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 211"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 212"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 213"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 214"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 215"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 216"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 217"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 218"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 219"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 220"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 221"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 222"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 223"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 224"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 225"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 226"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 227"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 228"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 229"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 230"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 231"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 232"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 233"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 234"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 235"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 236"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 237"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 238"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 239"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 240"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 241"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 242"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 243"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 244"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 245"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 246"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 247"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 248"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 249"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 250"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 251"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 252"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 253"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 254"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 255"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 256"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 257"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 258"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 259"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 260"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 261"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 262"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 263"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 264"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 265"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 266"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 267"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 268"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 269"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 270"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 271"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 272"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 273"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 274"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 275"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 276"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 277"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 278"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 279"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 280"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 281"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 282"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 283"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 284"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 285"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 286"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 287"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 288"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 289"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 290"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 291"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 292"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 293"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 294"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 295"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 296"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 297"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 298"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 299"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 300"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 301"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 302"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 303"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 304"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 305"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 306"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 307"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 308"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 309"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 310"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 311"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 312"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 313"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 314"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 315"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 316"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 317"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 318"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 319"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 320"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 321"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 322"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 323"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 324"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 325"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 326"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 327"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 328"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 329"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 330"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 331"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 332"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 333"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 334"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 335"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 336"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 337"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 338"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 339"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 340"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 341"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 342"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 343"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 344"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 345"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 346"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 347"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 348"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 349"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 350"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 351"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 352"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 353"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 354"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 355"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 356"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 357"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 358"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 359"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 360"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 361"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 362"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 363"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 364"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 365"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 366"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 367"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 368"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 369"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 370"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 371"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 372"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 373"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 374"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 375"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 376"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 377"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 378"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 379"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 380"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 381"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 382"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 383"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 384"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 385"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 386"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 387"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 388"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 389"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 390"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 391"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 392"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 393"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 394"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 395"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 396"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 397"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 398"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 399"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 400"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 401"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 402"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 403"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 404"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 405"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 406"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 407"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 408"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 409"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 410"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 411"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 412"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 413"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 414"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 415"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 416"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 417"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 418"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 419"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 420"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 421"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 422"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 423"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 424"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 425"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 426"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 427"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 428"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 429"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 430"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 431"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 432"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 433"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 434"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 435"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 436"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 437"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 438"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 439"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 440"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 441"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 442"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 443"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 444"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 445"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 446"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 447"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 448"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 449"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 450"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 451"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 452"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 453"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 454"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 455"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 456"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 457"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 458"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 459"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 460"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 461"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 462"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 463"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 464"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 465"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 466"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 467"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 468"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 469"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 470"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 471"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 472"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 473"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 474"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 475"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 476"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 477"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 478"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 479"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 480"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 481"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 482"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 483"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 484"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 485"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 486"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 487"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 488"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 489"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 490"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 491"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 492"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 493"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 494"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 495"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 496"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 497"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 498"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 499"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 500"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 501"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 502"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 503"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 504"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 505"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 506"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 507"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 508"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 509"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 510"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 511"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 512"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 513"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 514"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 515"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 516"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 517"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 518"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 519"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 520"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 521"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 522"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 523"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 524"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 525"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 526"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 527"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 528"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 529"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 530"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 531"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 532"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 533"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 534"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 535"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 536"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 537"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 538"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 539"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 540"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 541"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 542"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 543"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 544"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 545"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 546"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 547"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 548"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 549"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 550"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 551"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 552"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 553"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 554"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 555"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 556"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 557"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 558"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 559"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 560"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 561"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 562"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 563"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 564"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 565"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 566"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 567"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 568"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 569"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 570"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 571"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 572"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 573"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 574"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 575"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 576"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 577"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 578"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 579"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 580"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 581"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 582"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 583"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 584"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 585"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 586"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 587"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 588"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 589"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 590"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 591"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 592"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 593"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 594"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 595"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 596"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 597"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 598"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 599"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 600"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 601"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 602"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 603"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 604"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 605"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 606"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 607"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 608"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 609"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 610"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 611"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 612"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 613"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 614"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 615"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 616"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 617"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 618"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 619"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 620"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 621"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 622"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 623"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 624"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 625"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 626"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 627"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 628"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 629"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 630"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 631"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 632"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 633"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 634"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 635"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 636"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 637"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 638"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 639"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 640"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 641"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 642"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 643"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 644"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 645"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 646"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 647"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 648"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 649"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 650"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 651"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 652"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 653"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 654"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 655"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 656"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 657"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 658"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 659"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 660"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 661"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 662"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 663"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 664"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 665"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 666"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 667"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 668"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 669"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 670"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 671"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 672"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 673"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 674"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 675"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 676"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 677"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 678"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 679"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 680"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 681"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 682"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 683"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 684"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 685"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 686"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 687"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 688"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 689"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 690"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 691"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 692"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 693"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 694"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 695"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 696"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 697"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 698"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 699"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 700"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 701"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 702"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 703"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 704"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 705"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 706"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 707"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 708"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 709"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 710"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 711"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 712"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 713"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 714"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 715"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 716"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 717"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 718"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 719"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 720"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 721"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 722"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 723"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 724"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 725"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 726"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 727"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 728"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 729"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 730"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 731"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 732"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 733"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 734"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 735"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 736"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 737"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 738"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 739"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 740"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 741"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 742"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 743"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 744"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 745"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 746"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 747"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 748"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 749"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 750"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 751"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 752"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 753"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 754"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 755"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 756"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 757"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 758"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 759"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 760"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 761"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 762"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 763"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 764"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 765"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 766"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 767"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 768"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 769"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 770"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 771"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 772"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 773"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 774"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 775"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 776"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 777"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 778"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 779"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 780"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 781"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 782"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 783"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 784"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 785"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 786"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 787"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 788"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 789"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 790"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 791"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 792"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 793"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 794"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 795"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 796"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 797"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 798"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 799"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 800"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 801"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 802"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 803"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 804"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 805"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 806"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 807"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 808"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 809"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 810"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 811"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 812"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 813"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 814"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 815"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 816"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 817"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 818"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 819"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 820"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 821"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 822"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 823"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 824"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 825"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 826"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 827"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 828"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 829"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 830"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 831"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 832"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 833"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 834"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 835"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 836"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 837"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 838"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 839"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 840"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 841"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 842"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 843"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 844"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 845"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 846"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 847"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 848"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 849"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 850"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 851"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 852"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 853"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 854"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 855"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 856"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 857"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 858"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 859"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 860"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 861"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 862"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 863"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 864"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 865"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 866"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 867"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 868"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 869"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 870"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 871"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 872"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 873"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 874"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 875"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 876"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 877"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 878"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 879"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 880"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 881"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 882"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 883"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 884"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 885"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 886"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 887"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 888"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 889"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 890"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 891"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 892"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 893"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 894"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 895"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 896"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 897"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 898"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 899"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 900"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 901"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 902"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 903"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 904"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 905"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 906"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 907"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 908"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 909"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 910"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 911"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 912"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 913"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 914"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 915"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-21",
+    "status": "missed",
+    "note": "auto 916"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-22",
+    "status": "skip",
+    "note": "auto 917"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-23",
+    "status": "completed",
+    "note": "auto 918"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-24",
+    "status": "missed",
+    "note": "auto 919"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-25",
+    "status": "skip",
+    "note": "auto 920"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-26",
+    "status": "completed",
+    "note": "auto 921"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-27",
+    "status": "missed",
+    "note": "auto 922"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-28",
+    "status": "skip",
+    "note": "auto 923"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "auto 924"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "auto 925"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-03",
+    "status": "skip",
+    "note": "auto 926"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-04",
+    "status": "completed",
+    "note": "auto 927"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-05",
+    "status": "missed",
+    "note": "auto 928"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-06",
+    "status": "skip",
+    "note": "auto 929"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-07",
+    "status": "completed",
+    "note": "auto 930"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-08",
+    "status": "missed",
+    "note": "auto 931"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-09",
+    "status": "skip",
+    "note": "auto 932"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-10",
+    "status": "completed",
+    "note": "auto 933"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-11",
+    "status": "missed",
+    "note": "auto 934"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-12",
+    "status": "skip",
+    "note": "auto 935"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-13",
+    "status": "completed",
+    "note": "auto 936"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-14",
+    "status": "missed",
+    "note": "auto 937"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-15",
+    "status": "skip",
+    "note": "auto 938"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-16",
+    "status": "completed",
+    "note": "auto 939"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-17",
+    "status": "missed",
+    "note": "auto 940"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-18",
+    "status": "skip",
+    "note": "auto 941"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-19",
+    "status": "completed",
+    "note": "auto 942"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-20",
+    "status": "missed",
+    "note": "auto 943"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-21",
+    "status": "skip",
+    "note": "auto 944"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-22",
+    "status": "completed",
+    "note": "auto 945"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-23",
+    "status": "missed",
+    "note": "auto 946"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-24",
+    "status": "skip",
+    "note": "auto 947"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-25",
+    "status": "completed",
+    "note": "auto 948"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-26",
+    "status": "missed",
+    "note": "auto 949"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-27",
+    "status": "skip",
+    "note": "auto 950"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-2",
+    "date": "2026-01-28",
+    "status": "completed",
+    "note": "auto 951"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-3",
+    "date": "2026-01-01",
+    "status": "missed",
+    "note": "auto 952"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-4",
+    "date": "2026-01-02",
+    "status": "skip",
+    "note": "auto 953"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-5",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "auto 954"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-6",
+    "date": "2026-01-04",
+    "status": "missed",
+    "note": "auto 955"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-7",
+    "date": "2026-01-05",
+    "status": "skip",
+    "note": "auto 956"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-8",
+    "date": "2026-01-06",
+    "status": "completed",
+    "note": "auto 957"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-9",
+    "date": "2026-01-07",
+    "status": "missed",
+    "note": "auto 958"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-10",
+    "date": "2026-01-08",
+    "status": "skip",
+    "note": "auto 959"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-11",
+    "date": "2026-01-09",
+    "status": "completed",
+    "note": "auto 960"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-12",
+    "date": "2026-01-10",
+    "status": "missed",
+    "note": "auto 961"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-13",
+    "date": "2026-01-11",
+    "status": "skip",
+    "note": "auto 962"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-14",
+    "date": "2026-01-12",
+    "status": "completed",
+    "note": "auto 963"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-15",
+    "date": "2026-01-13",
+    "status": "missed",
+    "note": "auto 964"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-16",
+    "date": "2026-01-14",
+    "status": "skip",
+    "note": "auto 965"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-17",
+    "date": "2026-01-15",
+    "status": "completed",
+    "note": "auto 966"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-18",
+    "date": "2026-01-16",
+    "status": "missed",
+    "note": "auto 967"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-19",
+    "date": "2026-01-17",
+    "status": "skip",
+    "note": "auto 968"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-20",
+    "date": "2026-01-18",
+    "status": "completed",
+    "note": "auto 969"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-21",
+    "date": "2026-01-19",
+    "status": "missed",
+    "note": "auto 970"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-22",
+    "date": "2026-01-20",
+    "status": "skip",
+    "note": "auto 971"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-23",
+    "date": "2026-01-21",
+    "status": "completed",
+    "note": "auto 972"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-24",
+    "date": "2026-01-22",
+    "status": "missed",
+    "note": "auto 973"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-25",
+    "date": "2026-01-23",
+    "status": "skip",
+    "note": "auto 974"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-26",
+    "date": "2026-01-24",
+    "status": "completed",
+    "note": "auto 975"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-27",
+    "date": "2026-01-25",
+    "status": "missed",
+    "note": "auto 976"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-28",
+    "date": "2026-01-26",
+    "status": "skip",
+    "note": "auto 977"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-29",
+    "date": "2026-01-27",
+    "status": "completed",
+    "note": "auto 978"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-30",
+    "date": "2026-01-28",
+    "status": "missed",
+    "note": "auto 979"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-31",
+    "date": "2026-01-01",
+    "status": "skip",
+    "note": "auto 980"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-32",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "auto 981"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-33",
+    "date": "2026-01-03",
+    "status": "missed",
+    "note": "auto 982"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-34",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "auto 983"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-35",
+    "date": "2026-01-05",
+    "status": "completed",
+    "note": "auto 984"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-36",
+    "date": "2026-01-06",
+    "status": "missed",
+    "note": "auto 985"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-37",
+    "date": "2026-01-07",
+    "status": "skip",
+    "note": "auto 986"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-38",
+    "date": "2026-01-08",
+    "status": "completed",
+    "note": "auto 987"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-39",
+    "date": "2026-01-09",
+    "status": "missed",
+    "note": "auto 988"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-40",
+    "date": "2026-01-10",
+    "status": "skip",
+    "note": "auto 989"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-41",
+    "date": "2026-01-11",
+    "status": "completed",
+    "note": "auto 990"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-42",
+    "date": "2026-01-12",
+    "status": "missed",
+    "note": "auto 991"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-43",
+    "date": "2026-01-13",
+    "status": "skip",
+    "note": "auto 992"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-44",
+    "date": "2026-01-14",
+    "status": "completed",
+    "note": "auto 993"
+  },
+  {
+    "userId": "user-5",
+    "habitId": "habit-45",
+    "date": "2026-01-15",
+    "status": "missed",
+    "note": "auto 994"
+  },
+  {
+    "userId": "user-6",
+    "habitId": "habit-46",
+    "date": "2026-01-16",
+    "status": "skip",
+    "note": "auto 995"
+  },
+  {
+    "userId": "user-7",
+    "habitId": "habit-47",
+    "date": "2026-01-17",
+    "status": "completed",
+    "note": "auto 996"
+  },
+  {
+    "userId": "user-8",
+    "habitId": "habit-48",
+    "date": "2026-01-18",
+    "status": "missed",
+    "note": "auto 997"
+  },
+  {
+    "userId": "user-9",
+    "habitId": "habit-49",
+    "date": "2026-01-19",
+    "status": "skip",
+    "note": "auto 998"
+  },
+  {
+    "userId": "user-10",
+    "habitId": "habit-50",
+    "date": "2026-01-20",
+    "status": "completed",
+    "note": "auto 999"
   }
 ]
-
-/*
-NOTE: This is a small sample placeholder file committed so CI/examples can reference fixtures/exports/1k-records.json.
-For CI or local verification that requires 1000 records, generate a larger fixture at build time using a script (example generator: scripts/generate_fixture.js) or run a quick generator like:
-
-  node -e "const fs=require('fs'); const out=[]; for(let i=0;i<1000;i++){ out.push({ userId: `user-${(i%10)+1}`, habitId: `habit-${(i%50)+1}`, date: `2026-01-${((i%28)+1).toString().padStart(2,'0')}`, status: ['completed','missed','skip'][i%3], note:`auto ${i}` }); } fs.writeFileSync('fixtures/exports/1k-records.json', JSON.stringify(out)); }"
-
-Replace this placeholder with a generated fixture in CI if true 1k records are required.
-*/
