@@ -47,3 +47,18 @@ test('GET /api/export returns exported_at and data.entries', async () => {
   expect(Array.isArray(payload.data.entries)).toBe(true);
   expect(payload.data.entries.length).toBeGreaterThanOrEqual(1);
 });
+
+test('GET /api/export?format=csv returns canonical CSV header', async () => {
+  // insert a sample entry (ensure DB has at least one entry)
+  const userId = 'u2';
+  await app.knex('users').insert({ id: userId, name: 'test2' }).catch(() => {});
+  const habitId = 'h2';
+  await app.knex('habits').insert({ id: habitId, user_id: userId, title: 'sample2', cadence: 'daily' }).catch(() => {});
+  await app.knex('entries').insert({ id: 'e2', habit_id: habitId, date: '2026-06-15', status: 'missed' });
+
+  const res = await app.inject({ method: 'GET', url: '/api/export?format=csv' });
+  expect(res.statusCode).toBe(200);
+  // CSV payload: first line should be the headers
+  const firstLine = res.payload.split('\n')[0].trim();
+  expect(firstLine).toBe('userId,habitId,date,status,note');
+});
