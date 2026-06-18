@@ -4,17 +4,30 @@ module.exports = async function (fastify, opts) {
   // GET /api/export?format=csv|json
   fastify.get('/export', async (request, reply) => {
     const { format } = request.query || {};
-    const rows = await knex('entries').select('*').orderBy('date', 'desc');
+    // join entries -> habits to include user_id
+    const rows = await knex('entries')
+      .leftJoin('habits', 'entries.habit_id', 'habits.id')
+      .select('habits.user_id as user_id', 'entries.habit_id', 'entries.date', 'entries.status')
+      .orderBy('entries.date', 'desc');
+
+    // normalize to canonical export shape: userId, habitId, date, status, note
+    const entries = rows.map(r => ({
+      userId: r.user_id || null,
+      habitId: r.habit_id,
+      date: r.date,
+      status: r.status,
+      note: '' // currently no note column in entries; keep empty for compatibility
+    }));
 
     if (!format || format === 'json') {
-      return { exported_at: new Date().toISOString(), data: { entries: rows } };
+      return { exported_at: new Date().toISOString(), data: { entries } };
     }
 
     if (format === 'csv') {
-      // simple CSV serializer (header + rows)
-      const header = ['id', 'habit_id', 'date', 'status', 'created_at'];
+      // CSV header in canonical camelCase
+      const header = ['userId', 'habitId', 'date', 'status', 'note'];
       const csvRows = [header.join(',')];
-      for (const r of rows) {
+      for (const r of entries) {
         const vals = header.map(h => {
           const v = r[h] == null ? '' : String(r[h]);
           // escape double quotes
