@@ -149,4 +149,4 @@ jobs:
           fi
 
       - name: Success
-        run: echo "export-verification: OK"
+        run: echo 'export-verification: OK'
