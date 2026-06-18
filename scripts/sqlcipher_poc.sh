@@ -42,11 +42,9 @@ if [[ "$cmd" == "create" ]]; then
 
   # Use SQLCipher export pattern: open plaintext, attach encrypted, export
   sqlcipher "$PLAINTEXT_DB" <<SQL
-PRAGMA key = "";
-ATTACH DATABASE '$ENCRYPTED_DB' AS encrypted KEY 'x"$KEY"';
+ATTACH DATABASE '$ENCRYPTED_DB' AS encrypted KEY 'x$KEY';
 SELECT sqlcipher_export('encrypted');
 DETACH DATABASE encrypted;
-.exit
 SQL
   echo "Encrypted DB created: $ENCRYPTED_DB"
   echo "Note: Keep your key file safe. This PoC writes key files to working dir when requested."
@@ -66,9 +64,8 @@ if [[ "$cmd" == "read" ]]; then
   KEY=$(xxd -p -c 256 "$KEY_FILE")
   echo "Opening encrypted DB with key from $KEY_FILE"
   sqlcipher "$ENCRYPTED_DB" <<SQL
-PRAGMA key = 'x"$KEY"';
+PRAGMA key = 'x$KEY';
 SELECT * FROM secrets;
-.exit
 SQL
   exit 0
 fi
