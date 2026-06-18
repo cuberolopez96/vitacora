@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Unit & Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps
+        working-directory: backend
+        run: npm ci
+
+      - name: Run tests
+        working-directory: backend
+        run: npm test
+
+  export-verification:
+    name: Export verification (E2E)
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps
+        working-directory: backend
+        run: npm ci
+
+      - name: Prepare environment
+        run: |
+          cp .env.sample backend/.env || true
+          # Ensure SQLite storage dir exists
+          mkdir -p backend/data
+          # Use sqlite for CI validation
+          sed -i 's/^DB_CLIENT=.*/DB_CLIENT=sqlite3/' backend/.env
+          sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=./data/test-ci.sqlite|' backend/.env || true
+
+      - name: Run migrations
+        working-directory: backend
+        run: npm run migrate
+
+      - name: Start backend
+        working-directory: backend
+        run: |
+          nohup npm start > /tmp/backend.log 2>&1 &
+          echo "Waiting for backend to become healthy..."
+          for i in {1..60}; do
+            if curl -sf http://localhost:8080/api/healthz >/dev/null 2>&1; then
+              echo "healthz OK"
+              break
+            fi
+            sleep 2
+          done
+          if ! curl -sf http://localhost:8080/api/healthz >/dev/null 2>&1; then
+            echo "Backend did not become healthy in time. Logs:"
+            tail -n 200 /tmp/backend.log || true
+            exit 1
+          fi
+
+      - name: Generate full fixture (optional)
+        working-directory: .
+        run: |
+          node -e "const fs=require('fs'); const out=[]; for(let i=0;i<1000;i++){ out.push({ userId: `user-${(i%10)+1}`, habitId: `habit-${(i%50)+1}`, date: `2026-01-${((i%28)+1).toString().padStart(2,'0')}`, status: ['completed','missed','skip'][i%3], note:`auto ${i}` }); } fs.writeFileSync('fixtures/exports/1k-records.json', JSON.stringify(out)); }"
+
+      - name: Run export and validate CSV headers
+        working-directory: .
+        run: |
+          echo "Running export..."
+          curl -sf -o export.csv "http://localhost:8080/api/export?format=csv" || (echo "Export failed" && tail -n 200 /tmp/backend.log && exit 1)
+          HEADERS=$(head -n1 export.csv | tr -d '\r')
+          echo "CSV headers: $HEADERS"
+          if [ "$HEADERS" != "userId,habitId,date,status,note" ]; then
+            echo "CSV header mismatch (expected 'userId,habitId,date,status,note')"
+            echo "First line:" && head -n1 export.csv
+            exit 2
+          fi
+
+      - name: Success
+        run: echo "export-verification: OK"
