@@ -14,8 +14,17 @@ jobs:
         run: |
           docker build -t vitacora-backend:pr -f backend/Dockerfile backend
 
+      - name: Check frontend Dockerfile exists
+        id: check_frontend_docker
+        run: |
+          if [ -f frontend/Dockerfile ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build frontend image
-        if: exists('frontend/Dockerfile')
+        if: ${{ steps.check_frontend_docker.outputs.exists == 'true' }}
         run: |
           docker build -t vitacora-frontend:pr -f frontend/Dockerfile frontend
 
