@@ -1,0 +1,80 @@
+name: Encryption PoC
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  encryption-poc:
+    name: Backup encryption PoC
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps
+        working-directory: backend
+        run: npm ci
+
+      - name: Run migrations (create DB)
+        working-directory: backend
+        run: npm run migrate
+
+      - name: Generate ephemeral key
+        run: |
+          node scripts/generate_key.js
+          ls -la keys
+
+      - name: Create compressed backup (Node PoC)
+        run: |
+          node scripts/node_backup.js
+          ls -la backups | tail -n 5
+
+      - name: Encrypt latest backup
+        run: |
+          BACKUP_FILE=$(ls -1 backups | tail -n 1)
+          echo "Backup file: $BACKUP_FILE"
+          node scripts/node_encrypt.js keys/test.key "backups/$BACKUP_FILE"
+          ls -la backups | tail -n 5
+
+      - name: Decrypt latest .enc backup
+        run: |
+          ENC_FILE=$(ls -1 backups/*.enc | tail -n 1)
+          echo "Enc file: $ENC_FILE"
+          node scripts/node_decrypt.js keys/test.key "$ENC_FILE"
+          ls -la backups | tail -n 5
+
+      - name: Prepare restore file and run restore
+        run: |
+          # find decrypted file (.dec) and rename to .sqlite.gz if needed
+          DEC=$(ls -1 backups/*.dec | tail -n 1)
+          if [ -z "$DEC" ]; then
+            echo "No decrypted file found"; exit 2
+          fi
+          RESTORE_NAME=$(basename "$DEC" .dec)
+          mv "$DEC" "backups/$RESTORE_NAME"
+          echo "Restoring from backups/$RESTORE_NAME"
+          export RESTORE_FILE="backups/$RESTORE_NAME"
+          export DB_CONNECTION="./data/vitacora_ci_restore.sqlite"
+          export ENCRYPTION_ENABLED=true
+          export ENCRYPTION_KEY_PATH=keys/test.key
+          ./scripts/restore.sh
+          ls -la data
+
+      - name: Validate restore
+        run: |
+          if [ ! -f "data/vitacora_ci_restore.sqlite" ]; then
+            echo "Restore failed: file not found"; ls -la data; exit 1
+          fi
+          echo "Restore file exists:"; ls -la data/vitacora_ci_restore.sqlite
+
+      - name: Success
+        run: echo "encryption-poc: OK"
