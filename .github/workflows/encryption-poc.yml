@@ -46,15 +46,17 @@ jobs:
 
       - name: Encrypt latest backup
         run: |
-          BACKUP_FILE=$(ls -1 backups | tail -n 1)
+          # pick most recent non-sha256 backup (avoid picking checksum files)
+          BACKUP_FILE=$(ls -1t backups | grep -v '\.sha256$' | head -n 1)
           echo "Backup file: $BACKUP_FILE"
           node scripts/node_encrypt.js keys/test.key "backups/$BACKUP_FILE"
           ls -la backups | tail -n 5
 
       - name: Decrypt latest .enc backup
         run: |
-          ENC_FILE=$(ls -1 backups/*.enc | tail -n 1)
+          ENC_FILE=$(ls -1t backups/*.enc 2>/dev/null | head -n 1 || true)
           echo "Enc file: $ENC_FILE"
+          if [ -z "$ENC_FILE" ]; then echo "No .enc file found"; exit 2; fi
           node scripts/node_decrypt.js keys/test.key "$ENC_FILE"
           ls -la backups | tail -n 5
 
