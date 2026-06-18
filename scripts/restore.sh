@@ -11,6 +11,19 @@ if [ -z "$RESTORE_FILE" ]; then
 fi
 
 # If restore file ends with .sqlite.gz -> restore sqlite
+# If file ends with .enc, attempt to decrypt first (requires ENCRYPTION_KEY_PATH and ENCRYPTION_ENABLED=true)
+if [ "${ENCRYPTION_ENABLED:-false}" = "true" ] && [ "${RESTORE_FILE##*.}" = "enc" ]; then
+  if [ -z "${ENCRYPTION_KEY_PATH:-}" ] || [ ! -f "${ENCRYPTION_KEY_PATH}" ]; then
+    echo "ENCRYPTION_ENABLED=true but ENCRYPTION_KEY_PATH is not set or file not found." >&2
+    exit 3
+  fi
+  echo "Detected encrypted backup — decrypting with key from $ENCRYPTION_KEY_PATH"
+  TMP_DEC=$(mktemp)
+  openssl enc -d -aes-256-cbc -pbkdf2 -in "$RESTORE_FILE" -out "$TMP_DEC" -pass file:"$ENCRYPTION_KEY_PATH"
+  # Replace RESTORE_FILE with decrypted file for the subsequent switch
+  RESTORE_FILE="$TMP_DEC"
+fi
+
 case "$RESTORE_FILE" in
   *.sqlite.gz)
     echo "Restoring SQLite backup..."
