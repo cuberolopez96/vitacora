@@ -71,7 +71,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - estimate: S (4–8h)
    - dependencias: api-entries-crud
    - responsable: cuberolopez96
-   - criterio de aceptación: GET /api/export?format=csv|json devuelve 200 y descarga archivo válido; incluir prueba de integración y E2E.
+   - criterio de aceptación: GET /api/export?format=csv|json devuelve 200 y descarga archivo válido; incluir prueba de integración/E2E que use fixtures/exports/1k-records.json y valide encabezados, esquema y codificación.
    - notas: Implementar streaming CSV/JSON, manejar rangos y filtros; añadir tests E2E.
 
 6) id: docker-compose-minimal
@@ -79,8 +79,12 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - estimate: M (8–16h)
    - dependencias: init-project, db-migrations
    - responsable: cuberolopez96
-   - criterio de aceptación: `docker-compose up --build` levanta app y db y `curl http://localhost:PORT/api/healthz` retorna 200.
-   - notas: Incluir servicio db (mariadb/mysql), variables env en .env.sample; ejemplo `docker-compose.dev.yml`.
+   - criterio de aceptación: `docker-compose -f docker-compose.yml up --build` levanta la app usando la configuración por defecto (SQLite) y `curl -f http://localhost:8080/api/healthz` retorna 200.
+   - notas: Default para el MVP: usar SQLite (archivo .db) para instalaciones personales / RPi (no requiere contenedor DB).
+     Proveer dos ejemplos:
+     - docker-compose.yml (por defecto) — app + volumen con SQLite file-based DB.
+     - docker-compose.mysql.yml — ejemplo opcional que usa mariadb/mysql para despliegues multiusuario.
+     Incluir .env.sample con DB_ENGINE=sqlite|mysql y documentación de migración.
 
 6) id: frontend-basic
    - título: Primer UI React mínimo (listar/crear/marcar hábitos)
@@ -107,8 +111,8 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - estimate: M (8–16h)
    - dependencias: pwa-setup, api-entries-crud
    - responsable: cuberolopez96
-   - criterio de aceptación: Crear registro offline y sincronizarlo correctamente cuando vuelve la conexión.
-   - notas: Usar idb/keyval o una librería ligera; documentar flujo en README.
+   - criterio de aceptación: Crear registro offline y sincronizarlo correctamente cuando vuelve la conexión. Verificado por E2E: simular operaciones offline (n=1..500) y garantizar que todas las operaciones se entregan al servidor dentro de 5 minutos; documentar política de resolución de conflictos (por defecto last-write-wins) en docs/online-sync.md.
+   - notas: Usar idb/keyval o una librería ligera; documentar flujo y pruebas E2E en docs/online-sync.md.
 
 9) id: ui-stats-and-history
    - título: Panel de historial diario y rachas
@@ -240,9 +244,9 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 20) id: ci-workflow
     - título: Crear GitHub Actions workflow mínimo (build + tests)
     - estimate: S (3–6h)
-    - dependencias: unit-and-integration-tests
+    - dependencias: unit-and-integration-tests, e2e-playwright
     - responsable: cuberolopez96
-    - criterio de aceptación: Workflow `.github/workflows/ci.yml` ejecuta install, build y tests en push/PR.
+    - criterio de aceptación: Workflow `.github/workflows/ci.yml` ejecuta install, build, unit/integration tests y un job E2E que incluye "export-verification". El job `export-verification` ejecuta la exportación contra fixtures/exports/1k-records.json y falla si el archivo no cumple encabezados/esquema/codificación.
     - notas: Incluir servicio mysql (mariadb) en workflow per plan.md example.
 
 ---

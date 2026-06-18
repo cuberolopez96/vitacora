@@ -1,0 +1,46 @@
+[
+  {
+    "userId": "user-1",
+    "habitId": "habit-1",
+    "date": "2026-01-01",
+    "status": "completed",
+    "note": "sample record 1"
+  },
+  {
+    "userId": "user-1",
+    "habitId": "habit-2",
+    "date": "2026-01-02",
+    "status": "missed",
+    "note": "sample record 2"
+  },
+  {
+    "userId": "user-2",
+    "habitId": "habit-3",
+    "date": "2026-01-02",
+    "status": "completed",
+    "note": "sample record 3"
+  },
+  {
+    "userId": "user-3",
+    "habitId": "habit-1",
+    "date": "2026-01-03",
+    "status": "completed",
+    "note": "sample record 4"
+  },
+  {
+    "userId": "user-4",
+    "habitId": "habit-5",
+    "date": "2026-01-04",
+    "status": "skip",
+    "note": "sample record 5"
+  }
+]
+
+/*
+NOTE: This is a small sample placeholder file committed so CI/examples can reference fixtures/exports/1k-records.json.
+For CI or local verification that requires 1000 records, generate a larger fixture at build time using a script (example generator: scripts/generate_fixture.js) or run a quick generator like:
+
+  node -e "const fs=require('fs'); const out=[]; for(let i=0;i<1000;i++){ out.push({ userId: `user-${(i%10)+1}`, habitId: `habit-${(i%50)+1}`, date: `2026-01-${((i%28)+1).toString().padStart(2,'0')}`, status: ['completed','missed','skip'][i%3], note:`auto ${i}` }); } fs.writeFileSync('fixtures/exports/1k-records.json', JSON.stringify(out)); }"
+
+Replace this placeholder with a generated fixture in CI if true 1k records are required.
+*/

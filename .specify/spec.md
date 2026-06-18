@@ -35,6 +35,7 @@ Requisitos clave (testables)
 ----------------------------
 1. Despliegue: Se puede ejecutar con Docker Compose en un VPS o Raspberry Pi con 2GB RAM.
 2. Offline: La PWA permite registrar hábitos sin conexión y sincronizar cuando haya conectividad.
+   - Política de sincronización offline: La PWA debe poner en cola hasta 500 operaciones locales en IndexedDB y reintentar la sincronización automáticamente al reconectar. Resolución de conflictos por defecto: "last-write-wins". Retry/backoff exponencial con ventana máxima de reintentos de 5 minutos. Documentar la política en docs/online-sync.md y cubrirla con pruebas E2E que simulen create->offline->sync para n≤500 operaciones.
 3. Exportación: Usuarios pueden exportar todo su historial como CSV y JSON desde la interfaz.
 4. Backups: El sistema realiza backups automáticos programados que pueden descargarse o almacenarse localmente. Debe soportar procedimientos de backup/restore para SQLite (archivo .db + WAL) y para MySQL/MariaDB (mysqldump).
 5. Seguridad: TLS para comunicación; opción para cifrado en reposo y autenticación activable.
