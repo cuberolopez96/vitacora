@@ -13,9 +13,19 @@ if [ "${DB_CLIENT:-sqlite3}" = "sqlite3" ]; then
   TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
   FILENAME="$BACKUP_DIR/vitacora-backup-$TIMESTAMP.sqlite.gz"
   gzip -c "$DB_FILE" > "$FILENAME"
+  # If encryption is enabled and a key file is provided, encrypt the backup file (OpenSSL AES-256-CBC PBKDF2)
+  if [ "${ENCRYPTION_ENABLED:-false}" = "true" ] && [ -n "${ENCRYPTION_KEY_PATH:-}" ] && [ -f "${ENCRYPTION_KEY_PATH}" ]; then
+    FILENAME_ENC="$FILENAME.enc"
+    echo "Encryption enabled — encrypting backup to $FILENAME_ENC"
+    openssl enc -aes-256-cbc -pbkdf2 -salt -in "$FILENAME" -out "$FILENAME_ENC" -pass file:"$ENCRYPTION_KEY_PATH"
+    sha256sum "$FILENAME_ENC" > "$FILENAME_ENC.sha256"
+    rm -f "$FILENAME" "$FILENAME.sha256"
+    echo "Encrypted SQLite backup saved to $FILENAME_ENC"
+    exit 0
+  fi
+
   sha256sum "$FILENAME" > "$FILENAME.sha256"
   echo "SQLite backup saved to $FILENAME"
-  exit 0
 fi
 
 TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
