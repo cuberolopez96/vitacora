@@ -28,11 +28,10 @@ if [[ "$cmd" == "create" ]]; then
   echo "Creating plaintext DB: $PLAINTEXT_DB"
   rm -f "$PLAINTEXT_DB" "$ENCRYPTED_DB"
   sqlcipher "$PLAINTEXT_DB" <<'SQL'
-PRAGMA key = '';
-CREATE TABLE secrets(id TEXT PRIMARY KEY, secret TEXT);
-INSERT INTO secrets(id, secret) VALUES('s1','my secret value');
-.exit
-SQL
+  CREATE TABLE secrets(id TEXT PRIMARY KEY, secret TEXT);
+  INSERT INTO secrets(id, secret) VALUES('s1','my secret value');
+  .exit
+  SQL
   if [[ -z "$KEY_FILE" ]]; then
     echo "No key-file provided. Generating ephemeral key (ephemeral.key)"
     KEY_FILE="ephemeral.key"
