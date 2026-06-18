@@ -82,6 +82,25 @@ jobs:
           fi
 
           echo "Restoring from $RESTORE_FILE"
+          # Normalize names: handle cases like filename.sha256.dec -> filename
+          if [[ "$RESTORE_FILE" == *.sha256.dec ]]; then
+            TARGET="${RESTORE_FILE%.sha256.dec}"
+            echo "Normalizing $RESTORE_FILE -> $TARGET"
+            mv "$RESTORE_FILE" "$TARGET" || true
+            RESTORE_FILE="$TARGET"
+          elif [[ "$RESTORE_FILE" == *.dec ]]; then
+            TARGET="${RESTORE_FILE%.dec}"
+            echo "Stripping .dec: $RESTORE_FILE -> $TARGET"
+            mv "$RESTORE_FILE" "$TARGET" || true
+            RESTORE_FILE="$TARGET"
+          elif [[ "$RESTORE_FILE" == *.sha256 ]]; then
+            TARGET="${RESTORE_FILE%.sha256}"
+            if [ -f "$TARGET" ]; then
+              echo "Found .sha256 and corresponding file exists. Using $TARGET"
+              RESTORE_FILE="$TARGET"
+            fi
+          fi
+
           export RESTORE_FILE
           export DB_CONNECTION="./data/vitacora_ci_restore.sqlite"
           export ENCRYPTION_ENABLED=true
