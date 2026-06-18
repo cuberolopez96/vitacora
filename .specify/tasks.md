@@ -173,6 +173,18 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Implementar /metrics endpoint que exponga métricas Prometheus básicas (uptime, requests_total, request_duration_seconds bucketed) y garantizar que la aplicación emita logs estructurados en JSON con fields: timestamp, level, component, message, request_id (cuando aplique). Añadir documentación de ingest (ejemplo Prometheus scrape config y Grafana dashboard minimal) y pruebas de integración que validen /metrics responde y que los logs incluyen campos mínimos en stdout.
     - notas: Preferir prom-client (Node) y consola JSON ligera; documentar rotación de logs y opcional integración con pushgateway o archivo local para RPi.
 
+17) id: encryption-at-rest
+    - título: Implementar soporte opcional de cifrado en reposo (opt-in)
+    - estimate: M (8–16h)
+    - dependencias: db-migrations, backup-script
+    - responsable: cuberolopez96
+    - criterio de aceptación: Documentar e implementar un flujo opt-in para habilitar cifrado en reposo que incluya:
+      1) Configuración segura (ENV/archivo) para activar el cifrado sin incluir claves en el repo.
+      2) Documentación de gestión de claves (local key file, KMS options) y pasos de recuperación.
+      3) Pruebas de integración que validen creación de backup cifrado y restauración desde un backup cifrado en un entorno limpio.
+      4) Guía de limitaciones para SQLite (ej. SQLCipher) y opciones para MySQL/MariaDB (disk encryption o InnoDB TDE) y pasos de migración.
+    - notas: No incluir claves en el repositorio; proporcionar ejemplos de configuración y scripts para generar/usar claves en entornos locales y CI (use KMS in production).
+
 12) id: backup-ui-and-restore
     - título: UI/ops para listar backups y restauración manual
     - estimate: M (8–16h)
