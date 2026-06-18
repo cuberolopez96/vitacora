@@ -13,9 +13,15 @@ module.exports = {
           password: process.env.DB_PASSWORD || process.env.MYSQL_ROOT_PASSWORD || '',
           database: process.env.DB_NAME || 'vitacora'
         }
-      : {
-          filename: path.resolve(__dirname, '..', 'data', 'vitacora.sqlite')
-        },
+      : (() => {
+            // Allow overriding the sqlite filename via DB_FILE or DB_CONNECTION env vars.
+            const envFile = process.env.DB_FILE || process.env.DB_CONNECTION;
+            if (envFile && envFile.length > 0) {
+              // Resolve relative paths against the repository root (one level up from backend)
+              return { filename: path.resolve(__dirname, '..', envFile) };
+            }
+            return { filename: path.resolve(__dirname, '..', 'data', 'vitacora.sqlite') };
+          })(),
     useNullAsDefault: true,
     migrations: {
       directory: path.resolve(__dirname, 'migrations')
