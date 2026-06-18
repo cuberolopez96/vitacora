@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Simple backup script template for Vitacora (mysqldump example)
 # Requires: MYSQL_POD or MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, DB_NAME, BACKUP_DIR
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Simple restore script template for Vitacora
 # Usage examples:
 #  RESTORE_FILE=./backups/vitacora-backup-20260101T000000Z.sql.gz ./scripts/restore.sh
