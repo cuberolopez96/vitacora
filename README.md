@@ -74,3 +74,10 @@ Notas:
 
 Notas:
 - Implementación mínima y conservadora para Sprint 1. Ver TODOs en código para ampliaciones (autenticación, tests, validación, docs, etc.)
+
+Política de merges:
+- La rama main requiere que el check de CI "Image size check" pase antes de mergear.
+- No se requieren aprobaciones de PR (required_approving_review_count = 0); el propietario del repositorio puede fusionar PRs cuando los checks pasen.
+- Para cambios importantes (p. ej. seguridad, esquemas de BD, encriptación), se recomienda abrir PR y solicitar una revisión antes de mergear, aunque la política no la exija.
+
+Si quieres cambiar esta política, contacta al mantenedor del repositorio.
