@@ -103,3 +103,16 @@ jobs:
           fi
           # Ensure JSON has exported_at and data keys
           cat /tmp/export.json | jq -e '.exported_at and .data' >/dev/null
+
+      - name: Validate CSV export (strict header)
+        run: |
+          set -e
+          curl -sf -o export.csv "http://localhost:8080/api/export?format=csv" || (echo "Export failed" && sed -n '1,200p' /tmp/backend.log && exit 1)
+          HEADERS=$(head -n1 export.csv | tr -d '\r')
+          EXPECTED="userId,habitId,date,status,note"
+          echo "CSV headers: $HEADERS"
+          if [ "$HEADERS" != "$EXPECTED" ]; then
+            echo "CSV header mismatch (expected '$EXPECTED')"
+            echo "First line:" && head -n1 export.csv
+            exit 2
+          fi
