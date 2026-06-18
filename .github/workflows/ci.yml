@@ -26,9 +26,15 @@ jobs:
       - name: Prepare environment for tests
         run: |
           cp .env.sample backend/.env || true
-          mkdir -p backend/data
+          # Ensure SQLite storage dir exists where knexfile expects (project_root/data)
+          mkdir -p data
+          # create an empty sqlite file so knex/migrations can open it
+          if [ ! -f data/vitacora.sqlite ]; then
+            touch data/vitacora.sqlite
+          fi
           sed -i 's/^DB_CLIENT=.*/DB_CLIENT=sqlite3/' backend/.env || true
-          sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=./data/test-ci.sqlite|' backend/.env || true
+          # Set DB_CONNECTION in backend/.env to the file we created (relative to backend)
+          sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=../data/vitacora.sqlite|' backend/.env || true
 
       - name: Run migrations
         working-directory: backend
