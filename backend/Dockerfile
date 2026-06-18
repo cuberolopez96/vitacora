@@ -10,6 +10,8 @@ RUN if [ -f package-lock.json ]; then npm ci --silent; else npm install --no-aud
 COPY . .
 # If the project has a build step (e.g., TypeScript/Vite), run it; otherwise this will be a no-op
 RUN if npm run | grep -q build; then npm run build --silent; else echo "no build script"; fi
+# Ensure dist exists so runtime COPY step is valid even when there's no build output
+RUN mkdir -p dist
 
 # Final runtime image
 FROM node:18-alpine AS runtime
