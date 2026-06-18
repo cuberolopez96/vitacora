@@ -12,6 +12,12 @@ function build(opts = {}) {
   // Auth plugin (opt-in scaffold) - sets fastify.authEnabled and fastify.verifyAuth
   fastify.register(require('./plugins/auth'));
 
+  // Structured request logger (adds request_id and request-scoped logger)
+  fastify.register(require('./plugins/logger'));
+
+  // Metrics plugin (prom-client)
+  fastify.register(require('./plugins/metrics'));
+
   // Register routes
   fastify.register(require('./routes/habits'), { prefix: '/api' });
   fastify.register(require('./routes/entries'), { prefix: '/api' });
