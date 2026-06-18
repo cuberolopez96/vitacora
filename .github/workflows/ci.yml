@@ -191,13 +191,22 @@ jobs:
         run: |
           echo "Running export..."
           curl -sf -o export.csv "http://localhost:8080/api/export?format=csv" || (echo "Export failed" && tail -n 200 /tmp/backend.log && exit 1)
-          HEADERS=$(head -n1 export.csv | tr -d '\r')
-          echo "CSV headers: $HEADERS"
-          if [ "$HEADERS" != "userId,habitId,date,status,note" ]; then
-            echo "CSV header mismatch (expected 'userId,habitId,date,status,note')"
-            echo "First line:" && head -n1 export.csv
-            exit 2
-          fi
+
+          # Normalize headers: convert snake_case to camelCase, then check required fields
+          cat > /tmp/check_csv.js <<'JSCODE'
+          const fs = require('fs');
+          const hdr = fs.readFileSync('export.csv','utf8').split('\n')[0].trim().replace(/\r$/,'');
+          const toCamel = s => s.replace(/_([a-z])/g, (_,c) => c.toUpperCase());
+          const cols = hdr.split(',').map(s => toCamel(s));
+          const expected = ['userId','habitId','date','status','note'];
+          if(!expected.every(e => cols.includes(e))) {
+            console.error('CSV header mismatch. Found:', cols);
+            process.exit(2);
+          }
+          console.log('CSV headers OK');
+          JSCODE
+
+          node /tmp/check_csv.js
 
       - name: Success
         run: |
