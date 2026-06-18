@@ -41,6 +41,39 @@ Acceptance tests and CI
   2. Attempting restore without key must fail (expected).
 - CI: do not store real keys in CI. Use ephemeral/test keys generated at job runtime and cleaned up after.
 
+Local PoC using Node-based encryption (example)
+---------------------------------------------
+
+This repository includes useful scripts to test the backup/restore flow locally without requiring OpenSSL:
+
+1. Generate a local passphrase file:
+
+   node scripts/generate_key.js
+
+   This will create keys/test.key (permission 600) with a randomly generated passphrase.
+
+2. Create a compressed backup of the current SQLite DB:
+
+   node scripts/node_backup.js
+
+   The backup will be placed in backups/ as vitacora-backup-<timestamp>.sqlite.gz
+
+3. Encrypt the backup using the passphrase file:
+
+   node scripts/node_encrypt.js keys/test.key backups/<your-backup-file>.sqlite.gz
+
+   This produces backups/<your-backup-file>.sqlite.gz.enc
+
+4. Decrypt and restore:
+
+   node scripts/node_decrypt.js keys/test.key backups/<your-backup-file>.sqlite.gz.enc
+   # rename the decrypted file to have .sqlite.gz suffix if needed, then
+   RESTORE_FILE=backups/<your-decrypted-backup>.sqlite.gz DB_CONNECTION=./data/vitacora_restore_test.sqlite ./scripts/restore.sh
+
+Notes:
+- These scripts are PoC and use PBKDF2 with SHA-256 for key derivation and AES-256-CBC for encryption. They are intended for local verification. For production, integrate with a KMS and secure key handling.
+- Do not commit keys/test.key to source control.
+
 Operational notes
 -----------------
 - Recovery: Provide a documented "key rotation and recovery" section explaining how to rotate keys and re-encrypt DB safely.
