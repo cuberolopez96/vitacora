@@ -169,7 +169,22 @@ jobs:
       - name: Generate full fixture (optional)
         working-directory: .
         run: |
-          node -e "const fs=require('fs'); const out=[]; for(let i=0;i<1000;i++){ out.push({ userId: `user-${(i%10)+1}`, habitId: `habit-${(i%50)+1}`, date: `2026-01-${((i%28)+1).toString().padStart(2,'0')}`, status: ['completed','missed','skip'][i%3], note:`auto ${i}` }); } fs.writeFileSync('fixtures/exports/1k-records.json', JSON.stringify(out)); }"
+          mkdir -p fixtures/exports
+          cat > fixtures/exports/generate_1k.js <<'JSCODE'
+          const fs=require('fs');
+          const out=[];
+          for(let i=0;i<1000;i++){
+            out.push({
+              userId: `user-${(i%10)+1}`,
+              habitId: `habit-${(i%50)+1}`,
+              date: `2026-01-${((i%28)+1).toString().padStart(2,'0')}`,
+              status: ['completed','missed','skip'][i%3],
+              note: `auto ${i}`
+            });
+          }
+          fs.writeFileSync('fixtures/exports/1k-records.json', JSON.stringify(out));
+          JSCODE
+          node fixtures/exports/generate_1k.js
 
       - name: Run export and validate CSV headers
         working-directory: .
