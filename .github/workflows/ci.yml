@@ -131,35 +131,20 @@ jobs:
         working-directory: backend
         run: npm run migrate
 
-      - name: Start backend (with debug + timeout)
+      - name: Start backend
         working-directory: backend
         run: |
           set -euo pipefail
-          echo "Node version:"; node -v || true
-          echo "NPM version:"; npm -v || true
-          echo "Listing backend dir:"; ls -la || true
-          echo "Starting backend in background (nohup)..."
           nohup npm start > /tmp/backend.log 2>&1 &
           echo $! > /tmp/backend.pid || true
-          echo "Waiting for backend to become healthy (max 90s)..."
+          echo "Waiting for backend to become healthy (max 60s)..."
           attempt=0
-          max_attempts=18
+          max_attempts=12
           until curl -sf http://localhost:8080/api/healthz >/dev/null 2>&1; do
             attempt=$((attempt+1))
-            echo "healthz check attempt: $attempt/$max_attempts"
             if [ "$attempt" -ge "$max_attempts" ]; then
-              echo "Backend did not become healthy in time. Collecting debug info..."
-              echo "--- /tmp/backend.log (last 200 lines) ---"
-              tail -n 200 /tmp/backend.log || true
-              echo "--- ps aux (node processes) ---"
-              ps aux | grep node || true
-              echo "--- open ports ---"
-              if command -v ss >/dev/null 2>&1; then ss -ltnp || true; else netstat -ltnp || true; fi
-              echo "--- backend/.env (if present) ---"
-              [ -f .env ] && sed -n '1,200p' .env || true
-              echo "--- data files ---"
-              ls -la ../data || true
-              cat /proc/1/cgroup || true
+              echo "Backend did not become healthy in time. Tail backend log:" 
+              tail -n 50 /tmp/backend.log || true
               exit 1
             fi
             sleep 5
