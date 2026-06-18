@@ -15,7 +15,7 @@ Prerequisites
 - bash shell to run the scripts in `scripts/`.
 
 Files added in this PoC
-- scripts/sqlcipher_poc.sh — create a sample plaintext DB, create an encrypted copy using SQLCipher, and demonstrate reading it with a key file.
+- scripts/sqlcipher_poc.sh — create a sample plaintext DB using sqlcipher (no sqlite3 dependency), create an encrypted copy with SQLCipher, and demonstrate reading it with a key file.
 - scripts/kms_simulate.sh — simulate wrapping (encrypt) and unwrapping (decrypt) a key file with OpenSSL to emulate KMS behavior.
 
 Quick walkthrough

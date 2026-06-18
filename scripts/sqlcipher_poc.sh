@@ -27,10 +27,11 @@ if [[ "$cmd" == "create" ]]; then
   ENCRYPTED_DB="poc_encrypted.sqlite"
   echo "Creating plaintext DB: $PLAINTEXT_DB"
   rm -f "$PLAINTEXT_DB" "$ENCRYPTED_DB"
-  sqlite3 "$PLAINTEXT_DB" <<'SQL'
+  sqlcipher "$PLAINTEXT_DB" <<'SQL'
+PRAGMA key = '';
 CREATE TABLE secrets(id TEXT PRIMARY KEY, secret TEXT);
 INSERT INTO secrets(id, secret) VALUES('s1','my secret value');
-.quit
+.exit
 SQL
   if [[ -z "$KEY_FILE" ]]; then
     echo "No key-file provided. Generating ephemeral key (ephemeral.key)"
