@@ -83,4 +83,5 @@ jobs:
           echo "Restore file exists:"; ls -la data/vitacora_ci_restore.sqlite
 
       - name: Success
-        run: echo 'encryption-poc: OK'
+        run: |
+          echo encryption-poc: OK
