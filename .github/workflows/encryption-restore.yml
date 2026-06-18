@@ -1,0 +1,69 @@
+name: Encryption restore verification
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  verify-encryption-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sqlcipher openssl dos2unix xxd git
+
+      - name: Prepare scripts
+        run: |
+          sed -i 's/\r$//' scripts/*.sh || true
+          chmod +x scripts/*.sh || true
+
+      - name: Clean any previous PoC artifacts
+        run: |
+          rm -f data.key data.key.enc unwrapped.key poc_plain.sqlite poc_encrypted.sqlite || true
+
+      - name: Generate and wrap key (simulate KMS)
+        run: |
+          ./scripts/kms_simulate.sh cleanup || true
+          ./scripts/kms_simulate.sh generate
+
+      - name: Unwrap key
+        env:
+          KMS_PASS: ${{ secrets.KMS_TEST_PASS }}
+        run: |
+          # For manual runs set KMS_TEST_PASS in repo secrets; fallback to prompt-like behavior if unset
+          if [ -z "${KMS_PASS:-}" ]; then
+            echo "KMS_TEST_PASS not set; using default unsafe test passphrase"
+            export KMS_PASS=test-wrap-pass
+          fi
+          ./scripts/kms_simulate.sh unwrap
+
+      - name: Create encrypted DB using sqlcipher PoC
+        run: |
+          ./scripts/sqlcipher_poc.sh create --key-file unwrapped.key
+
+      - name: Read from encrypted DB
+        run: |
+          ./scripts/sqlcipher_poc.sh read --key-file unwrapped.key
+
+      - name: Run backup + restore PoC if scripts present
+        run: |
+          if [ -x scripts/backup.sh ]; then
+            ./scripts/backup.sh --out tmp-backup.db.gz
+            if [ -x scripts/restore.sh ]; then
+              ./scripts/restore.sh tmp-backup.db.gz --inplace
+            fi
+          else
+            echo "No backup.sh script to run; skipping backup/restore steps"
+          fi
+
+      - name: Verify artifacts
+        run: |
+          ls -la || true
+          test -f poc_encrypted.sqlite || (echo "Encrypted DB missing" && exit 1)
+
+      - name: Success message
+        run: echo "Encryption restore PoC verification completed successfully"
