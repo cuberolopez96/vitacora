@@ -34,7 +34,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: MVP core (Backend & DB)
 
-1) id: init-project
+id: init-project
    - título: Inicializar repositorio y scaffolding
    - estimate: S (3–6h)
    - dependencias: (ninguna)
@@ -42,7 +42,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: Repo con package.json, scripts (install, dev, build), estructura inicial backend/frontend y README básico.
    - notas: Ejecutar `npm init -y` en backend/ y frontend/; crear README y .gitignore. Usar TypeScript opcional.
 
-2) id: db-migrations
+id: db-migrations
    - título: Configurar esquema y migraciones (User/Habit/Entry/Backup)
    - estimate: M (8–16h)
    - dependencias: init-project
@@ -50,7 +50,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: migrations/ con script que crea tablas User/Habit/Entry/Backup ejecutable en la BD configurada (SQLite por defecto y MySQL/MariaDB opcional); incluir test de migración para ambos motores.
    - notas: Recomendar usar Knex o TypeORM migrations; incluir comando `npm run migrate` en backend package.json.
 
-3) id: api-habits-crud
+id: api-habits-crud
    - título: Implementar endpoints CRUD para /api/habits
    - estimate: M (8–16h)
    - dependencias: db-migrations
@@ -58,7 +58,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: GET/POST/PUT/DELETE /api/habits funcionan y pueden probarse con curl ejemplos.
    - notas: Fastify + rutas en backend/src/routes/habits.js (o .ts). Añadir validación de payload y pruebas manuales con curl.
 
-4) id: api-entries-crud
+id: api-entries-crud
    - título: Implementar endpoints para registros diarios (/api/entries)
    - estimate: S (3–6h)
    - dependencias: db-migrations
@@ -66,7 +66,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: POST /api/entries y GET /api/entries?date= crean y listan registros correctamente.
    - notas: Ruta backend/src/routes/entries.js; validar unicidad (habit_id, date) según data-model.
 
-5) id: api-export
+id: api-export
    - título: Implementar endpoint /api/export (CSV/JSON) y tests
    - estimate: S (4–8h)
    - dependencias: api-entries-crud
@@ -74,7 +74,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: GET /api/export?format=csv|json devuelve 200 y descarga archivo válido; incluir prueba de integración/E2E que use fixtures/exports/1k-records.json y valide encabezados, esquema y codificación.
    - notas: Implementar streaming CSV/JSON, manejar rangos y filtros; añadir tests E2E.
 
-6) id: docker-compose-minimal
+id: docker-compose-minimal
    - título: Crear docker-compose mínimo (app + db)
    - estimate: M (8–16h)
    - dependencias: init-project, db-migrations
@@ -86,7 +86,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
      - docker-compose.mysql.yml — ejemplo opcional que usa mariadb/mysql para despliegues multiusuario.
      Incluir .env.sample con DB_ENGINE=sqlite|mysql y documentación de migración.
 
-6) id: frontend-basic
+id: frontend-basic
    - título: Primer UI React mínimo (listar/crear/marcar hábitos)
    - estimate: S (3–6h)
    - dependencias: api-habits-crud, api-entries-crud, docker-compose-minimal
@@ -98,7 +98,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: Frontend & PWA
 
-7) id: pwa-setup
+id: pwa-setup
    - título: Integrar Vite + React y configurar Service Worker (PWA)
    - estimate: M (8–16h)
    - dependencias: frontend-basic
@@ -106,7 +106,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: La app puede instalarse como PWA y carga en modo offline las vistas básicas.
    - notas: Usar Workbox o la plantilla Vite PWA; añadir manifest.json y registro de service worker.
 
-8) id: offline-sync
+id: offline-sync
    - título: Implementar cola local (IndexedDB) y reconciliación básica
    - estimate: M (8–16h)
    - dependencias: pwa-setup, api-entries-crud
@@ -114,7 +114,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
    - criterio de aceptación: Crear registro offline y sincronizarlo correctamente cuando vuelve la conexión. Verificado por E2E: simular operaciones offline (n=1..500) y garantizar que todas las operaciones se entregan al servidor dentro de 5 minutos; documentar política de resolución de conflictos (por defecto last-write-wins) en docs/online-sync.md.
    - notas: Usar idb/keyval o una librería ligera; documentar flujo y pruebas E2E en docs/online-sync.md.
 
-9) id: ui-stats-and-history
+id: ui-stats-and-history
    - título: Panel de historial diario y rachas
    - estimate: M (8–16h)
    - dependencias: frontend-basic, api-entries-crud
@@ -126,7 +126,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: Backups & Scheduler
 
-10) id: worker-scheduler
+id: worker-scheduler
     - título: Implementar worker Node.js para scheduler (node-cron)
     - estimate: M (8–16h)
     - dependencias: docker-compose-minimal
@@ -134,7 +134,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Worker en contenedor ejecuta tareas programadas y expone /healthz.
     - notas: Contenedor separado worker/, añadir servicio en docker-compose; usar node-cron y health endpoint.
 
-11) id: backup-script
+id: backup-script
     - título: Script de backup (soporta SQLite y MySQL/MariaDB)
     - estimate: M (8–16h)
     - dependencias: worker-scheduler
@@ -142,14 +142,14 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Ejecutar script crea backup comprimido con checksum y lo lista en tabla backups; soporta el motor de BD configurado (SQLite o MySQL/MariaDB).
     - notas: scripts/backup.sh (bash) y scripts/backup.ps1 (opcional). Incluir ejemplos para MySQL (`docker exec mysql_container mysqldump ...`) y para SQLite (hacer WAL checkpoint y uso de `sqlite3 db.sqlite .backup backup.sqlite` o `docker cp` del archivo DB), además de instrucción para asegurar consistencia en contenedores.
 
-12) id: backup-restore-performance
+id: backup-restore-performance
     - título: Prueba de rendimiento de restauración (50MB)
     - estimate: S (3–6h)
     - dependencias: backup-script, backup-ui-and-restore
     - responsable: cuberolopez96
     - criterio de aceptación: Ejecutar un ciclo de backup+restore usando un dump/snapshot de ~50MB (sanitizado) completa la restauración en ≤10 minutos en un entorno limpio (local CI runner or RPi-like VM) y generar un informe con tiempos; añadir script `scripts/test_restore_performance.sh` que retorna exit code != 0 si excede el umbral.
     - notas: Use sanitized sample DB (50MB) in tests/fixtures; document steps to reproduce y agregar job opcional en CI para ejecuciones programadas o on-demand.
-14) id: user-data-deletion
+id: user-data-deletion
     - título: Endpoint para eliminación y exportación de datos personales
     - estimate: M (8–16h)
     - dependencias: db-migrations, api-habits-crud
@@ -157,7 +157,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Implementar DELETE /api/users/{id} (o /api/me) que realice eliminación irreversible de los datos personales del usuario (o un flujo de 'anonymize' en instalaciones single-user), y GET /api/users/{id}/export que entrega los datos en JSON/ZIP; incluir tests de integración y documentación en docs/privacy.md.
     - notas: Registrar la operación en el log de auditoría; confirmar backups/documentación del procedimiento.
 
-15) id: audit-logs
+id: audit-logs
     - título: Implementar audit logs para operaciones críticas
     - estimate: M (8–16h)
     - dependencias: init-project, db-migrations
@@ -165,7 +165,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Crear tabla audit_logs con timestamp, actor, action, resource_id y metadata; exponer endpoint /api/audit?since=&limit= con permisos admin/maintainer; proveer export CSV/JSON y pruebas que validen la grabación de eventos críticos (create/update/delete user, backups, restores).
     - notas: Definir retention policy en docs; incluir exportación segura para mantenimiento. Migración: migrations/0001_create_audit_logs.sql
 
-16) id: logging-and-metrics
+id: logging-and-metrics
     - título: Implementar logging estructurado y métricas básicas
     - estimate: M (8–16h)
     - dependencias: init-project
@@ -173,7 +173,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Implementar /metrics endpoint que exponga métricas Prometheus básicas (uptime, requests_total, request_duration_seconds bucketed) y garantizar que la aplicación emita logs estructurados en JSON con fields: timestamp, level, component, message, request_id (cuando aplique). Añadir documentación de ingest (ejemplo Prometheus scrape config y Grafana dashboard minimal) y pruebas de integración que validen /metrics responde y que los logs incluyen campos mínimos en stdout.
     - notas: Preferir prom-client (Node) y consola JSON ligera; documentar rotación de logs y opcional integración con pushgateway o archivo local para RPi.
 
-17) id: encryption-at-rest
+id: encryption-at-rest
     - título: Implementar soporte opcional de cifrado en reposo (opt-in)
     - estimate: M (8–16h)
     - dependencias: db-migrations, backup-script
@@ -185,7 +185,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
       4) Guía de limitaciones para SQLite (ej. SQLCipher) y opciones para MySQL/MariaDB (disk encryption o InnoDB TDE) y pasos de migración.
     - notas: No incluir claves en el repositorio; proporcionar ejemplos de configuración y scripts para generar/usar claves en entornos locales y CI (use KMS in production).
 
-12) id: backup-ui-and-restore
+id: backup-ui-and-restore
     - título: UI/ops para listar backups y restauración manual
     - estimate: M (8–16h)
     - dependencias: backup-script
@@ -197,7 +197,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: Security & Ops
 
-13) id: auth-local-optin
+id: auth-local-optin
   - título: Implementar autenticación local opt‑in (bcrypt + sesiones por cookie segura)
   - estimate: M (8–16h)
   - dependencias: db-migrations
@@ -205,7 +205,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
   - criterio de aceptación: soporte para activar auth vía .env; cuando está activada, acceso requiere login; usar sesiones basadas en cookie segura (httpOnly, Secure, SameSite=Lax) con storage servidor (session store) o JWT con refresh token si se decide exponer API a terceros. Documentar CSRF protections y política de expiración/refresh.
   - notas: Recomendación inicial: cookie-session + CSRF token (más compatible con navegadores/PWA). Documentar alternativa JWT en RFC si se requiere acceso API de terceros.
 
-14) id: tls-and-reverse-proxy-doc
+id: tls-and-reverse-proxy-doc
     - título: Documentar TLS y ejemplo con Caddy (o nginx + certbot)
     - estimate: S (3–6h)
     - dependencias: docker-compose-minimal
@@ -213,7 +213,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Documentación con docker-compose ejemplo para Caddy y pasos para obtener TLS.
     - notas: docs/tls.md con `docker-compose.caddy.yml` ejemplo; incluir Caddyfile básico.
 
-15) id: env-samples-and-secrets
+id: env-samples-and-secrets
     - título: Crear .env.sample y notas de manejo de secrets
     - estimate: S (3–6h)
     - dependencias: init-project
@@ -225,7 +225,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: Packaging & Deploy
 
-16) id: dockerfiles-and-optimizations
+id: dockerfiles-and-optimizations
     - título: Dockerfiles multi-stage y optimización de imágenes
     - estimate: M (8–16h)
     - dependencias: init-project, frontend-basic
@@ -233,7 +233,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Dockerfiles para backend/fronted construyen imágenes funcionales y preferiblemente <200MB (si posible).
     - notas: Multi-stage builds, reducir devDependencies y limpiar cache; probar `docker build`.
 
-17) id: docker-compose-prod
+id: docker-compose-prod
     - título: docker-compose producción (Caddy/nginx + app + db + worker)
     - estimate: M (8–16h)
     - dependencias: dockerfiles-and-optimizations, tls-and-reverse-proxy-doc
@@ -245,7 +245,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: QA & CI
 
-18) id: unit-and-integration-tests
+id: unit-and-integration-tests
     - título: Añadir tests unitarios e integración básicos (Jest)
     - estimate: M (8–16h)
     - dependencias: api-habits-crud, api-entries-crud
@@ -253,7 +253,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Tests de modelos y utilitarios pasan localmente (`npm test`).
     - notas: Configurar jest, scripts `test` y `test:integration`; usar docker-compose test DB.
 
-19) id: e2e-playwright
+id: e2e-playwright
     - título: Configurar E2E (Playwright) para flujo crítico
     - estimate: M (8–16h)
     - dependencias: frontend-basic, docker-compose-minimal
@@ -261,7 +261,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: E2E que cubre crear hábito → marcar → export pasa en CI/local.
     - notes: Añadir tests/e2e/ y job en GitHub Actions para ejecutarlos.
 
-20) id: ci-workflow
+id: ci-workflow
     - título: Crear GitHub Actions workflow mínimo (build + tests)
     - estimate: S (3–6h)
     - dependencias: unit-and-integration-tests, e2e-playwright
@@ -273,7 +273,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
 
 ## Epic: Docs & Release
 
-21) id: quickstart-rpi-vps
+id: quickstart-rpi-vps
     - título: Quickstart para RPi/VPS (docs/quickstart.md)
     - estimate: M (8–16h)
     - dependencias: docker-compose-prod, tls-and-reverse-proxy-doc
@@ -281,7 +281,7 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - criterio de aceptación: Guía verificada mediante el script `scripts/verify_quickstart.sh` que completa los pasos de quickstart en ≤60 minutos en un entorno documentado (VM o RPi). El script debe levantar los contenedores, esperar /api/healthz y crear un hábito de prueba.
     - notas: Incluir recomendaciones swap/zram, volumes y restauración desde backup; referenciar `scripts/verify_quickstart.sh` en la documentación y añadir instrucciones para ejecutar localmente o en CI.
 
-22) id: release-checklist
+id: release-checklist
     - título: Preparar checklist de release y CHANGELOG
     - estimate: S (3–6h)
     - dependencias: ci-workflow, unit-and-integration-tests
