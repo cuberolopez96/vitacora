@@ -109,6 +109,24 @@ jobs:
           sed -i 's/^DB_CLIENT=.*/DB_CLIENT=sqlite3/' backend/.env
           sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=./data/test-ci.sqlite|' backend/.env || true
 
+      - name: Ensure knex DB file exists (export job)
+        run: |
+          echo "Resolving knex sqlite filename via backend/knexfile.js"
+          DBFILE=$(node -e "console.log(require('./backend/knexfile').development.connection.filename)") || true
+          echo "Knex DB file resolved: $DBFILE"
+          if [ -z "$DBFILE" ]; then
+            echo "DBFILE empty — defaulting to ./data/test-ci.sqlite"
+            DBFILE=$(pwd)/backend/data/test-ci.sqlite
+          fi
+          DIR=$(dirname "$DBFILE")
+          echo "Creating dir: $DIR"
+          mkdir -p "$DIR"
+          if [ ! -f "$DBFILE" ]; then
+            echo "Touching $DBFILE"
+            touch "$DBFILE"
+          fi
+          ls -la "$DIR"
+
       - name: Run migrations
         working-directory: backend
         run: npm run migrate
