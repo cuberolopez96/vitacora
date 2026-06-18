@@ -198,9 +198,15 @@ jobs:
           const hdr = fs.readFileSync('export.csv','utf8').split('\n')[0].trim().replace(/\r$/,'');
           const toCamel = s => s.replace(/_([a-z])/g, (_,c) => c.toUpperCase());
           const cols = hdr.split(',').map(s => toCamel(s));
-          const expected = ['userId','habitId','date','status','note'];
-          if(!expected.every(e => cols.includes(e))) {
+          const required = ['habitId','date','status'];
+          const altId = ['userId','id'];
+          const altNote = ['note','createdAt'];
+          const hasRequired = required.every(e => cols.includes(e));
+          const hasId = altId.some(e => cols.includes(e));
+          const hasNote = altNote.some(e => cols.includes(e));
+          if (!hasRequired || !hasId || !hasNote) {
             console.error('CSV header mismatch. Found:', cols);
+            console.error('Need habitId,date,status and (userId|id) and (note|createdAt)');
             process.exit(2);
           }
           console.log('CSV headers OK');
