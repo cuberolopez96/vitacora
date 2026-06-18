@@ -1,0 +1,65 @@
+name: Image size check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  image-size:
+    name: Image size check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: |
+          if [ -f backend/Dockerfile ]; then
+            echo "Building backend image..."
+            docker build -t vitacora-backend:ci -f backend/Dockerfile backend
+          else
+            echo "No backend/Dockerfile found; skipping backend image build"
+          fi
+
+      - name: Build frontend image (if present)
+        run: |
+          if [ -f frontend/Dockerfile ]; then
+            echo "Building frontend image..."
+            docker build -t vitacora-frontend:ci -f frontend/Dockerfile frontend
+          else
+            echo "No frontend/Dockerfile found; skipping frontend image build"
+          fi
+
+      - name: Check image sizes
+        run: |
+          set -euo pipefail
+          THRESH_WARN=$((200*1024*1024))
+          THRESH_FAIL=$((350*1024*1024))
+
+          check_image() {
+            local tag="$1"
+            # find image ID for tag
+            id=$(docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | awk -v t="$tag" '$1==t{print $2; exit}')
+            if [ -z "$id" ]; then
+              echo "Image $tag not found; skipping"
+              return 0
+            fi
+            size=$(docker image inspect --format='{{.Size}}' "$id")
+            size_mb=$(awk "BEGIN {printf \"%.2f\", $size/1024/1024}")
+            echo "$tag size: ${size_mb} MB"
+            if [ "$size" -ge "$THRESH_FAIL" ]; then
+              echo "$tag exceeds fail threshold ($((THRESH_FAIL/1024/1024))MB)"
+              return 1
+            elif [ "$size" -ge "$THRESH_WARN" ]; then
+              echo "WARNING: $tag is ${size_mb}MB (over $((THRESH_WARN/1024/1024))MB target)"
+              # Emit GitHub Actions warning annotation
+              echo "::warning::$tag size is ${size_mb}MB (target $((THRESH_WARN/1024/1024))MB)"
+            fi
+            return 0
+          }
+
+          check_image vitacora-backend:ci || exit 1
+          # frontend check should not fail the job if image missing; if present, treat same thresholds
+          check_image vitacora-frontend:ci || exit 1
