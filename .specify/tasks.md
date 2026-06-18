@@ -258,8 +258,8 @@ Resumen: Lista de Epics y tareas accionables, dependency-ordered y priorizadas p
     - estimate: M (8–16h)
     - dependencias: docker-compose-prod, tls-and-reverse-proxy-doc
     - responsable: cuberolopez96
-    - criterio de aceptación: Guía paso a paso <=60 minutos para desplegar en RPi/VPS y verificar /healthz.
-    - notas: Incluir recomendaciones swap/zram, volumes y restauración desde backup.
+    - criterio de aceptación: Guía verificada mediante el script `scripts/verify_quickstart.sh` que completa los pasos de quickstart en ≤60 minutos en un entorno documentado (VM o RPi). El script debe levantar los contenedores, esperar /api/healthz y crear un hábito de prueba.
+    - notas: Incluir recomendaciones swap/zram, volumes y restauración desde backup; referenciar `scripts/verify_quickstart.sh` en la documentación y añadir instrucciones para ejecutar localmente o en CI.
 
 22) id: release-checklist
     - título: Preparar checklist de release y CHANGELOG
