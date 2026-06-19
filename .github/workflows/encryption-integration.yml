@@ -14,11 +14,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install system deps (sqlcipher)
+      - name: Pull prebuilt SQLCipher runner image (optional)
         run: |
-          sudo apt-get update
-          # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
-          sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+          IMAGE=ghcr.io/${{ github.repository_owner }}/vitacora-sqlcipher:node18
+          echo "Trying to pull prebuilt image $IMAGE"
+          if docker pull "$IMAGE" >/dev/null 2>&1; then
+            echo "PREBUILT_SQLCIPHER_IMAGE=$IMAGE" >> $GITHUB_ENV
+            echo "IMAGE_AVAILABLE=true" >> $GITHUB_ENV
+            echo "Pulled prebuilt SQLCipher image: $IMAGE"
+          else
+            echo "IMAGE_AVAILABLE=false" >> $GITHUB_ENV
+            echo "Prebuilt image not available; CI will install system deps locally"
+          fi
+
+      - name: Install system deps (sqlcipher or skip if image available)
+        run: |
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Using prebuilt SQLCipher image; skipping apt-get install on runner"
+          else
+            sudo apt-get update
+            # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
+            sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+          fi
 
       - name: Cache Node / build artifacts
         uses: actions/cache@v4

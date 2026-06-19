@@ -1,0 +1,27 @@
+# Dockerfile for prebuilt runner with SQLCipher system libs and Node 18
+# Usage: build and push to GHCR (see workflow build-sqlcipher-image.yml)
+FROM node:18-bullseye
+
+# Install SQLCipher and build deps
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    sqlcipher \
+    libsqlcipher-dev \
+    pkg-config \
+    build-essential \
+    python3 \
+    ca-certificates \
+    openssl \
+    xxd \
+    dos2unix \
+    git \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
+
+# Expose helpful metadata
+LABEL org.opencontainers.image.title="vitacora-sqlcipher-runner"
+LABEL org.opencontainers.image.description="Node 18 + SQLCipher system libs to speed CI and reliably build sqlite3 against SQLCipher"
+
+# Default entrypoint does nothing; workflows will mount repo and run commands inside container
+ENTRYPOINT ["/bin/bash", "-lc"]
