@@ -10,6 +10,10 @@ mkdir -p "$BACKUP_DIR"
 if [ "${DB_CLIENT:-sqlite3}" = "sqlite3" ]; then
   echo "Detected sqlite3 DB_CLIENT — copying sqlite file"
   DB_FILE=${DB_CONNECTION:-./data/vitacora.sqlite}
+  if [ ! -f "$DB_FILE" ]; then
+    echo "No SQLite DB found at $DB_FILE — skipping backup and exiting cleanly."
+    exit 0
+  fi
   TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
   FILENAME="$BACKUP_DIR/vitacora-backup-$TIMESTAMP.sqlite.gz"
   gzip -c "$DB_FILE" > "$FILENAME"
