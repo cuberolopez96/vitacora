@@ -14,11 +14,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install system deps (sqlcipher)
+      - name: Pull prebuilt SQLCipher runner image (optional)
         run: |
-          sudo apt-get update
-          # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
-          sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+          IMAGE=ghcr.io/${{ github.repository_owner }}/vitacora-sqlcipher:node18
+          echo "Trying to pull prebuilt image $IMAGE"
+          if docker pull "$IMAGE" >/dev/null 2>&1; then
+            echo "PREBUILT_SQLCIPHER_IMAGE=$IMAGE" >> $GITHUB_ENV
+            echo "IMAGE_AVAILABLE=true" >> $GITHUB_ENV
+            echo "Pulled prebuilt SQLCipher image: $IMAGE"
+          else
+            echo "IMAGE_AVAILABLE=false" >> $GITHUB_ENV
+            echo "Prebuilt image not available; CI will install system deps locally"
+          fi
+
+      - name: Install system deps (sqlcipher or skip if image available)
+        run: |
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Using prebuilt SQLCipher image; skipping apt-get install on runner"
+          else
+            sudo apt-get update
+            # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
+            sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+          fi
 
       - name: Cache Node / build artifacts
         uses: actions/cache@v4
@@ -55,17 +72,48 @@ jobs:
           export KMS_PASS=test-wrap-pass
           ./scripts/kms_simulate.sh unwrap
 
-      - name: Create encrypted PoC DB
+      - name: Create encrypted PoC DB (in image if available)
         run: |
-          ./scripts/sqlcipher_poc.sh create --key-file unwrapped.key
-          ls -la poc_encrypted.sqlite || true
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Running PoC create inside prebuilt image: $PREBUILT_SQLCIPHER_IMAGE"
+            docker run --rm -v "$GITHUB_WORKSPACE":/work -w /work $PREBUILT_SQLCIPHER_IMAGE bash -lc "chmod +x scripts/*.sh && ./scripts/sqlcipher_poc.sh create --key-file unwrapped.key && ls -la poc_encrypted.sqlite"
+          else
+            ./scripts/sqlcipher_poc.sh create --key-file unwrapped.key
+            ls -la poc_encrypted.sqlite || true
+          fi
 
-      - name: Run backend SQLCipher integration test
+      - name: Diagnose encrypted DB with sqlcipher CLI (in image if available)
+        run: |
+          echo "Listing workspace:" || true
+          ls -la || true
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Running diagnose inside prebuilt image: $PREBUILT_SQLCIPHER_IMAGE"
+            docker run --rm -v "$GITHUB_WORKSPACE":/work -w /work $PREBUILT_SQLCIPHER_IMAGE bash -lc "echo 'Dumping first bytes of encrypted DB:' && xxd -l 32 ./poc_encrypted.sqlite || true; KEY_HEX=$(xxd -p -c 256 ./unwrapped.key); echo \"PRAGMA key = 'x$KEY_HEX';\" > /tmp/verify.sql; echo \"SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;\" >> /tmp/verify.sql; sqlcipher ./poc_encrypted.sqlite < /tmp/verify.sql || true"
+          else
+            echo "Dumping first bytes of encrypted DB:"
+            xxd -l 32 ./poc_encrypted.sqlite || true
+            if command -v sqlcipher >/dev/null 2>&1; then
+              echo "Attempt to open encrypted DB with sqlcipher CLI"
+              KEY_HEX=$(xxd -p -c 256 ./unwrapped.key)
+              echo "PRAGMA key = 'x$KEY_HEX';" > /tmp/verify.sql
+              echo "SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;" >> /tmp/verify.sql
+              sqlcipher ./poc_encrypted.sqlite < /tmp/verify.sql || true
+            else
+              echo "sqlcipher CLI not available on runner"
+            fi
+          fi
+
+      - name: Run backend SQLCipher integration test (in image if available)
         working-directory: backend
         env:
           ENCRYPTION_ENABLED: true
           ENCRYPTION_KEY_PATH: ../unwrapped.key
           DB_CONNECTION: ../poc_encrypted.sqlite
         run: |
-          # Use npx jest directly to avoid npm script argument parsing issues
-          npx jest tests/integration/sqlcipher.test.js --runInBand --reporters=default
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Running backend tests inside prebuilt image: $PREBUILT_SQLCIPHER_IMAGE"
+            docker run --rm -v "$GITHUB_WORKSPACE":/work -w /work $PREBUILT_SQLCIPHER_IMAGE bash -lc "cd backend && ENCRYPTION_ENABLED=true ENCRYPTION_KEY_PATH=../unwrapped.key DB_CONNECTION=../poc_encrypted.sqlite npx jest tests/integration/sqlcipher.test.js --runInBand --reporters=default"
+          else
+            # Use npx jest directly to avoid npm script argument parsing issues
+            npx jest tests/integration/sqlcipher.test.js --runInBand --reporters=default
+          fi

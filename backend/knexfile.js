@@ -4,19 +4,24 @@ require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
 const DB_CLIENT = process.env.DB_CLIENT || process.env.NODE_ENV === 'production' ? 'mysql' : 'sqlite3';
 
-// Helper to read encryption key (either env var or file)
+// Helper to resolve encryption key into a SQLCipher-friendly PRAGMA value (already escaped/prefixed)
 function resolveEncryptionKey() {
   if ((process.env.ENCRYPTION_ENABLED || 'false') !== 'true') return null;
+  // If a raw key is provided in env, prefer it. If it looks hex, prefix with x.
   if (process.env.ENCRYPTION_KEY && process.env.ENCRYPTION_KEY.length > 0) {
-    return process.env.ENCRYPTION_KEY;
+    const envKey = process.env.ENCRYPTION_KEY.trim();
+    if (/^[0-9a-fA-F]+$/.test(envKey)) return 'x' + envKey;
+    // escape single quotes for PRAGMA string literal
+    return envKey.replace(/'/g, "''");
   }
   const keyPath = process.env.ENCRYPTION_KEY_PATH;
   if (keyPath && fs.existsSync(path.resolve(__dirname, '..', keyPath))) {
     try {
-      const k = fs.readFileSync(path.resolve(__dirname, '..', keyPath), 'utf8').trim();
-      return k;
+      // Read raw bytes and return hex-prefixed form accepted by SQLCipher (xHEX)
+      const abs = path.resolve(__dirname, '..', keyPath);
+      const buf = fs.readFileSync(abs);
+      return 'x' + buf.toString('hex');
     } catch (e) {
-      // ignore and fallthrough to null
       return null;
     }
   }
@@ -49,25 +54,11 @@ module.exports = {
       if (!key) return undefined;
       return {
         afterCreate: function (conn, done) {
-          // conn is a sqlite3 Database object when using sqlite3 driver; run PRAGMA key for SQLCipher if available
           try {
-            // If key is raw bytes (hex encoded in PoC), convert to SQLCipher hex notation: prefix with x and pass hex string
-            let safeKey = key;
-            // If key contains non-printable characters, read as Buffer and convert to hex
-            const hasNonPrintable = /[^\x20-\x7E]/.test(safeKey);
-            if (hasNonPrintable) {
-              const buf = Buffer.from(fs.readFileSync(path.resolve(__dirname, '..', process.env.ENCRYPTION_KEY_PATH || process.env.ENCRYPTION_KEY || '')));
-              safeKey = 'x' + buf.toString('hex');
-            } else if (/^[0-9a-fA-F]+$/.test(safeKey) && safeKey.length >= 32) {
-              // If the key looks like hex already, prefix with x
-              safeKey = 'x' + safeKey;
-            } else {
-              // Escape single quotes in textual key
-              safeKey = safeKey.replace(/'/g, "''");
-            }
-
+            const safeKey = key; // already SQLCipher-ready (xHEX or escaped text)
             conn.run(`PRAGMA key = '${safeKey}';`, function (err) {
               if (err) return done(err, conn);
+<<<<<<< HEAD
               // Optionally verify by running a no-op pragma (cipher_version) if supported
               conn.get("PRAGMA cipher_version;", function (verErr) {
                 // If cipher_version exists it's a strong signal SQLCipher is present; regardless, attempt a light query to verify the DB can be read with the provided key.
@@ -79,10 +70,18 @@ module.exports = {
                   }
                   return done(null, conn);
                 });
+=======
+              // Verify by attempting a light query; if it fails with NOTADB we get a clear diagnostic for CI.
+              conn.get("SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;", function (testErr, row) {
+                if (testErr) {
+                  const msg = 'SQLCipher verification failed: ' + testErr.message + ' — verify sqlite3 is built with SQLCipher and ENCRYPTION_KEY_PATH/key are correct.';
+                  return done(new Error(msg), conn);
+                }
+                return done(null, conn);
+>>>>>>> origin/main
               });
             });
           } catch (e) {
-            // Fallback: return connection without setting key (app will likely fail to read encrypted DB)
             return done(null, conn);
           }
         }
