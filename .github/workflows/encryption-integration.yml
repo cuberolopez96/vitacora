@@ -72,6 +72,17 @@ jobs:
           export KMS_PASS=test-wrap-pass
           ./scripts/kms_simulate.sh unwrap
 
+      - name: Fetch/unwrap KMS key (in image if available)
+        run: |
+          echo "Fetching/unwrapping KMS key using provider: ${ENCRYPTION_KMS_PROVIDER:-simulate}"
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Running fetch inside prebuilt image: $PREBUILT_SQLCIPHER_IMAGE"
+            docker run --rm -v "$GITHUB_WORKSPACE":/work -w /work $PREBUILT_SQLCIPHER_IMAGE bash -lc "cd backend && node bin/fetch-kms-key.js"
+          else
+            cd backend || exit 1
+            node bin/fetch-kms-key.js
+          fi
+
       - name: Create encrypted PoC DB (in image if available)
         run: |
           if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
