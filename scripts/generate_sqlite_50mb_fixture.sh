@@ -10,31 +10,41 @@ rm -f "$OUT"
 
 echo "Generating SQLite fixture at $OUT (target ${TARGET} bytes)..."
 
-# Create DB and table
+# Create DB and table (initial setup)
 sqlite3 "$OUT" <<SQL
 PRAGMA journal_mode = OFF;
 CREATE TABLE data(id INTEGER PRIMARY KEY, payload BLOB);
-BEGIN TRANSACTION;
 SQL
 
-# Insert rows with ~1KB blob chunks until file size >= TARGET
+# Insert rows in batches (each batch in its own transaction) until file size >= TARGET
+batch_size=100
 i=0
+batch_file=$(mktemp)
+payload_file=/tmp/payload.bin
+
 while true; do
-  # generate ~1024 bytes of base64 -> ~1368 bytes raw; use dd to produce binary
-  openssl rand -out /tmp/payload.bin 1024 >/dev/null 2>&1 || head -c 1024 /dev/urandom > /tmp/payload.bin
-  # Use sqlite3 parameter binding via here-doc for speed
-  sqlite3 "$OUT" "INSERT INTO data(payload) VALUES(x'$(xxd -p /tmp/payload.bin | tr -d '\n')');"
-  i=$((i+1))
-  if (( i % 100 == 0 )); then
-    size=$(stat -c %s "$OUT" 2>/dev/null || stat -f%z "$OUT")
-    echo "Inserted $i rows; current size: ${size} bytes"
-    if [ "$size" -ge "$TARGET" ]; then
-      break
-    fi
+  # accumulate a batch of INSERT statements
+  echo "BEGIN TRANSACTION;" > "$batch_file"
+  for ((j=1; j<=batch_size; j++)); do
+    # generate ~1024 bytes of random binary
+    openssl rand -out "$payload_file" 1024 >/dev/null 2>&1 || head -c 1024 /dev/urandom > "$payload_file"
+    hex=$(xxd -p "$payload_file" | tr -d '\n')
+    echo "INSERT INTO data(payload) VALUES(x'$hex');" >> "$batch_file"
+    i=$((i+1))
+  done
+  echo "COMMIT;" >> "$batch_file"
+
+  # apply the batch
+  sqlite3 "$OUT" < "$batch_file"
+
+  # report progress and check size
+  size=$(stat -c %s "$OUT" 2>/dev/null || stat -f%z "$OUT")
+  echo "Inserted $i rows; current size: ${size} bytes"
+  if [ "$size" -ge "$TARGET" ]; then
+    break
   fi
 done
 
-sqlite3 "$OUT" "COMMIT;"
-rm -f /tmp/payload.bin
+rm -f "$batch_file" "$payload_file"
 size=$(stat -c %s "$OUT" 2>/dev/null || stat -f%z "$OUT")
 echo "Fixture created: $OUT (size ${size} bytes, rows inserted: $i)"
