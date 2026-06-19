@@ -20,17 +20,31 @@ jobs:
           # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
           sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
 
+      - name: Cache Node / build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            backend/node_modules
+            ~/.cache/node-gyp
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('backend/package.json') }}-sqlcipher-v1
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install backend deps (build sqlite3 for SQLCipher)
+      - name: Install backend deps (prefer cached)
         working-directory: backend
         run: |
-          # force sqlite3 build-from-source against system SQLCipher
-          npm install --no-audit --no-fund
-          npm rebuild sqlite3 --build-from-source --sqlite_libname=sqlcipher --sqlite=/usr
+          # Attempt fast install; if cache hit, node_modules available and rebuild may be skipped
+          npm install --no-audit --no-fund || true
+          # Only rebuild sqlite3 if install detected missing binary
+          if ! node -e "try{require('sqlite3'); console.log('sqlite3 ok')}catch(e){process.exit(1)}"; then
+            npm rebuild sqlite3 --build-from-source --sqlite_libname=sqlcipher --sqlite=/usr
+          fi
 
       - name: Prepare PoC artifacts
         run: |
