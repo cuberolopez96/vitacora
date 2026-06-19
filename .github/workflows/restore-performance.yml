@@ -25,8 +25,15 @@ jobs:
           FIXTURE=tests/fixtures/50MB.sqlite
           if [ -f "$FIXTURE" ]; then
             echo "Fixture found: $FIXTURE"
-            echo "Running restore performance script with a placeholder restore command (cp) — replace with real restore in CI when fixture and environment are available."
             ./scripts/test_restore_performance.sh "$FIXTURE" "cp $FIXTURE restored.sqlite"
           else
-            echo "Fixture $FIXTURE not found — skipping restore performance test (placeholder)."
+            echo "Fixture $FIXTURE not found — generating sanitized ~50MB fixture"
+            chmod +x ./scripts/generate_sqlite_50mb_fixture.sh || true
+            ./scripts/generate_sqlite_50mb_fixture.sh "$FIXTURE"
+            if [ -f "$FIXTURE" ]; then
+              echo "Generated fixture: $FIXTURE"
+              ./scripts/test_restore_performance.sh "$FIXTURE" "cp $FIXTURE restored.sqlite"
+            else
+              echo "Failed to generate fixture; skipping test"
+            fi
           fi
