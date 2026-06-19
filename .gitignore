@@ -2,6 +2,9 @@
 node_modules/
 npm-debug.log*
 package-lock.json
+!/.github/docker/**/package-lock.json
+!/.github/**/package-lock.json
+!\backend/package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
