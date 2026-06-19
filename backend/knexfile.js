@@ -58,13 +58,16 @@ module.exports = {
             const safeKey = key; // already SQLCipher-ready (xHEX or escaped text)
             conn.run(`PRAGMA key = '${safeKey}';`, function (err) {
               if (err) return done(err, conn);
-              // Verify by attempting a light query; if it fails with NOTADB we get a clear diagnostic for CI.
-              conn.get("SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;", function (testErr, row) {
-                if (testErr) {
-                  const msg = 'SQLCipher verification failed: ' + testErr.message + ' — verify sqlite3 is built with SQLCipher and ENCRYPTION_KEY_PATH/key are correct.';
-                  return done(new Error(msg), conn);
-                }
-                return done(null, conn);
+              // Optionally check cipher_version (may not exist) then verify by attempting a light query; if it fails with NOTADB we get a clear diagnostic for CI.
+              conn.get("PRAGMA cipher_version;", function (verErr) {
+                // ignore verErr — some sqlite builds won't have cipher_version, it's just a hint
+                conn.get("SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;", function (testErr, row) {
+                  if (testErr) {
+                    const msg = 'SQLCipher verification failed: ' + testErr.message + ' — verify sqlite3 is built with SQLCipher and ENCRYPTION_KEY_PATH/key are correct.';
+                    return done(new Error(msg), conn);
+                  }
+                  return done(null, conn);
+                });
               });
             });
           } catch (e) {
