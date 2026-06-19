@@ -50,11 +50,27 @@ jobs:
           ./scripts/sqlcipher_poc.sh read --key-file unwrapped.key
 
       - name: Run backup + restore PoC if scripts present
+        env:
+          # instruct backup/restore to use the PoC encrypted DB and encryption key
+          DB_CONNECTION: ./poc_encrypted.sqlite
+          ENCRYPTION_ENABLED: true
+          ENCRYPTION_KEY_PATH: unwrapped.key
         run: |
+          set -euo pipefail
           if [ -x scripts/backup.sh ]; then
-            ./scripts/backup.sh --out tmp-backup.db.gz
+            echo "Running backup.sh against $DB_CONNECTION"
+            ./scripts/backup.sh
+            # Find created backup file (non-sha256)
+            BK=$(ls -1t backups | grep -v '\.sha256$' | head -n 1 || true)
+            if [ -z "$BK" ]; then
+              echo "No backup created in backups/"; ls -la backups || true; exit 1
+            fi
+            echo "Backup created: backups/$BK"
             if [ -x scripts/restore.sh ]; then
-              ./scripts/restore.sh tmp-backup.db.gz --inplace
+              # point restore to the backup we just created
+              export RESTORE_FILE="backups/$BK"
+              export DB_CONNECTION="./poc_restore_target.sqlite"
+              ./scripts/restore.sh
             fi
           else
             echo "No backup.sh script to run; skipping backup/restore steps"
@@ -64,6 +80,13 @@ jobs:
         run: |
           ls -la || true
           test -f poc_encrypted.sqlite || (echo "Encrypted DB missing" && exit 1)
+          # confirm restored artifact exists when restore was executed
+          if [ -f "poc_restore_target.sqlite" ]; then
+            echo "Restore target created: poc_restore_target.sqlite"
+            ls -la poc_restore_target.sqlite
+          else
+            echo "No restore target created (restore step may have been skipped)"; true
+          fi
 
       - name: Success message
         run: echo "Encryption restore PoC verification completed successfully"

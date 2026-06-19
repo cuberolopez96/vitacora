@@ -1,7 +1,27 @@
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
 const DB_CLIENT = process.env.DB_CLIENT || process.env.NODE_ENV === 'production' ? 'mysql' : 'sqlite3';
+
+// Helper to read encryption key (either env var or file)
+function resolveEncryptionKey() {
+  if ((process.env.ENCRYPTION_ENABLED || 'false') !== 'true') return null;
+  if (process.env.ENCRYPTION_KEY && process.env.ENCRYPTION_KEY.length > 0) {
+    return process.env.ENCRYPTION_KEY;
+  }
+  const keyPath = process.env.ENCRYPTION_KEY_PATH;
+  if (keyPath && fs.existsSync(path.resolve(__dirname, '..', keyPath))) {
+    try {
+      const k = fs.readFileSync(path.resolve(__dirname, '..', keyPath), 'utf8').trim();
+      return k;
+    } catch (e) {
+      // ignore and fallthrough to null
+      return null;
+    }
+  }
+  return null;
+}
 
 module.exports = {
   development: {
@@ -23,6 +43,31 @@ module.exports = {
             return { filename: path.resolve(__dirname, '..', 'data', 'vitacora.sqlite') };
           })(),
     useNullAsDefault: true,
+    // If encryption is enabled and using sqlite3/SQLCipher, add a pool.afterCreate hook to set the key on new connections
+    pool: (function () {
+      const key = resolveEncryptionKey();
+      if (!key) return undefined;
+      return {
+        afterCreate: function (conn, done) {
+          // conn is a sqlite3 Database object when using sqlite3 driver; run PRAGMA key for SQLCipher if available
+          try {
+            // Escape single quotes in key
+            const safeKey = key.replace(/'/g, "''");
+            conn.run(`PRAGMA key = '${safeKey}';`, function (err) {
+              if (err) return done(err, conn);
+              // Optionally verify by running a no-op pragma (cipher_version) if supported
+              conn.get("PRAGMA cipher_version;", function (verErr) {
+                // ignore verErr — some sqlite builds won't have cipher_version, it's just a check
+                return done(null, conn);
+              });
+            });
+          } catch (e) {
+            // Fallback: return connection without setting key (app will likely fail to read encrypted DB)
+            return done(null, conn);
+          }
+        }
+      };
+    }()),
     migrations: {
       directory: path.resolve(__dirname, 'migrations')
     },
