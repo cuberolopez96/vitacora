@@ -14,23 +14,54 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install system deps (sqlcipher)
+      - name: Pull prebuilt SQLCipher runner image (optional)
         run: |
-          sudo apt-get update
-          # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
-          sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+          IMAGE=ghcr.io/${{ github.repository_owner }}/vitacora-sqlcipher:node18
+          echo "Trying to pull prebuilt image $IMAGE"
+          if docker pull "$IMAGE" >/dev/null 2>&1; then
+            echo "PREBUILT_SQLCIPHER_IMAGE=$IMAGE" >> $GITHUB_ENV
+            echo "IMAGE_AVAILABLE=true" >> $GITHUB_ENV
+            echo "Pulled prebuilt SQLCipher image: $IMAGE"
+          else
+            echo "IMAGE_AVAILABLE=false" >> $GITHUB_ENV
+            echo "Prebuilt image not available; CI will install system deps locally"
+          fi
+
+      - name: Install system deps (sqlcipher or skip if image available)
+        run: |
+          if [ "${IMAGE_AVAILABLE:-false}" = "true" ]; then
+            echo "Using prebuilt SQLCipher image; skipping apt-get install on runner"
+          else
+            sudo apt-get update
+            # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
+            sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+          fi
+
+      - name: Cache Node / build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            backend/node_modules
+            ~/.cache/node-gyp
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('backend/package.json') }}-sqlcipher-v1
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install backend deps (build sqlite3 for SQLCipher)
+      - name: Install backend deps (prefer cached)
         working-directory: backend
         run: |
-          # force sqlite3 build-from-source against system SQLCipher
-          npm install --no-audit --no-fund
-          npm rebuild sqlite3 --build-from-source --sqlite_libname=sqlcipher --sqlite=/usr
+          # Attempt fast install; if cache hit, node_modules available and rebuild may be skipped
+          npm install --no-audit --no-fund || true
+          # Only rebuild sqlite3 if install detected missing binary
+          if ! node -e "try{require('sqlite3'); console.log('sqlite3 ok')}catch(e){process.exit(1)}"; then
+            npm rebuild sqlite3 --build-from-source --sqlite_libname=sqlcipher --sqlite=/usr
+          fi
 
       - name: Prepare PoC artifacts
         run: |
@@ -45,6 +76,22 @@ jobs:
         run: |
           ./scripts/sqlcipher_poc.sh create --key-file unwrapped.key
           ls -la poc_encrypted.sqlite || true
+
+      - name: Diagnose encrypted DB with sqlcipher CLI
+        run: |
+          echo "Listing backups/ artifacts:" || true
+          ls -la || true
+          echo "Dumping first bytes of encrypted DB:"
+          xxd -l 32 ./poc_encrypted.sqlite || true
+          if command -v sqlcipher >/dev/null 2>&1; then
+            echo "Attempt to open encrypted DB with sqlcipher CLI"
+            KEY_HEX=$(xxd -p -c 256 ./unwrapped.key)
+            echo "PRAGMA key = 'x$KEY_HEX';" > /tmp/verify.sql
+            echo "SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;" >> /tmp/verify.sql
+            sqlcipher ./poc_encrypted.sqlite < /tmp/verify.sql || true
+          else
+            echo "sqlcipher CLI not available on runner"
+          fi
 
       - name: Run backend SQLCipher integration test
         working-directory: backend
