@@ -1,0 +1,57 @@
+name: Encryption integration test
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  encryption-integration:
+    name: Encryption integration (SQLCipher)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install system deps (sqlcipher)
+        run: |
+          sudo apt-get update
+          # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
+          sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps (build sqlite3 for SQLCipher)
+        working-directory: backend
+        run: |
+          # force sqlite3 build-from-source against system SQLCipher
+          npm install --no-audit --no-fund
+          npm rebuild sqlite3 --build-from-source --sqlite_libname=sqlcipher --sqlite=/usr
+
+      - name: Prepare PoC artifacts
+        run: |
+          chmod +x scripts/*.sh || true
+          ./scripts/kms_simulate.sh cleanup || true
+          ./scripts/kms_simulate.sh generate
+          # CI uses a test passphrase to unwrap the wrapped key (ephemeral, not stored in repo secrets)
+          export KMS_PASS=test-wrap-pass
+          ./scripts/kms_simulate.sh unwrap
+
+      - name: Create encrypted PoC DB
+        run: |
+          ./scripts/sqlcipher_poc.sh create --key-file unwrapped.key
+          ls -la poc_encrypted.sqlite || true
+
+      - name: Run backend SQLCipher integration test
+        working-directory: backend
+        env:
+          ENCRYPTION_ENABLED: true
+          ENCRYPTION_KEY_PATH: ../unwrapped.key
+          DB_CONNECTION: ../poc_encrypted.sqlite
+        run: |
+          # Use npx jest directly to avoid npm script argument parsing issues
+          npx jest tests/integration/sqlcipher.test.js --runInBand --reporters=default

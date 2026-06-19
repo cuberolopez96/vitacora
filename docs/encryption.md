@@ -32,14 +32,18 @@ Key Management & KMS
 - Offer three options in docs/examples:
   - Local key file (for single-server installs): path configured via ENCRYPTION_KEY_PATH and protected by OS permissions.
   - Environment-reference (less secure): ENCRYPTION_KEY env var — allowed for dev only and explicitly discouraged for production.
-  - KMS (recommended for production): ENCRYPTION_KMS=aws|gcp|vault and ENCRYPTION_KMS_KEY_ID to instruct runtime to fetch key at startup.
+  - KMS (recommended for production): ENCRYPTION_KMS_PROVIDER=aws|gcp|vault and ENCRYPTION_KMS_KEY_ID to instruct runtime to fetch key at startup. The repository includes a KMS simulator (scripts/kms_simulate.sh) used by CI PoC and tests.
+
+Runtime integration
+-------------------
+- The backend attempts to resolve an encryption key at startup when ENCRYPTION_KMS_PROVIDER is set and no ENCRYPTION_KEY/ENCRYPTION_KEY_PATH is provided. The current PoC uses scripts/kms_simulate.sh to unwrap an ephemeral key and exposes it as ENCRYPTION_KEY_PATH for the knex/SQLCipher integration.
 
 Acceptance tests and CI
 -----------------------
 - Integration tests to validate:
   1. Enabling encryption, performing a backup, and restoring from that backup using the correct key.
   2. Attempting restore without key must fail (expected).
-- CI: do not store real keys in CI. Use ephemeral/test keys generated at job runtime and cleaned up after.
+- CI: do not store real keys in CI. Use ephemeral/test keys generated at job runtime and cleaned up after. A dedicated workflow (.github/workflows/encryption-integration.yml) runs an end-to-end PoC on Ubuntu runners: it installs SQLCipher, builds the sqlite3 Node binding against SQLCipher, generates/unwraps a test key, creates an encrypted DB, and runs an integration test that opens the encrypted DB via Knex.
 
 Local PoC using Node-based encryption (example)
 ---------------------------------------------
