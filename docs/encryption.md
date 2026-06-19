@@ -32,7 +32,34 @@ Key Management & KMS
 - Offer three options in docs/examples:
   - Local key file (for single-server installs): path configured via ENCRYPTION_KEY_PATH and protected by OS permissions.
   - Environment-reference (less secure): ENCRYPTION_KEY env var — allowed for dev only and explicitly discouraged for production.
-  - KMS (recommended for production): ENCRYPTION_KMS_PROVIDER=aws|gcp|vault and ENCRYPTION_KMS_KEY_ID to instruct runtime to fetch key at startup. The repository includes a KMS simulator (scripts/kms_simulate.sh) used by CI PoC and tests.
+  - KMS (recommended for production): ENCRYPTION_KMS_PROVIDER=aws|gcp|vault and ENCRYPTION_KMS_KEY_ID to instruct runtime to fetch key at startup.
+
+KMS providers (runtime)
+-----------------------
+- This repo implements a pluggable KMS loader at backend/lib/kms. Use ENCRYPTION_KMS_PROVIDER to select a provider.
+  - simulate (default for CI/dev): wraps scripts/kms_simulate.sh to generate and unwrap a test key. Useful for CI PoC and local testing.
+  - gcp: GCP KMS provider (backend/lib/kms/providers/gcp.js). Requires installing @google-cloud/kms and setting ENCRYPTION_KMS_KEY_ID. The provider reads a wrapped ciphertext (ENCRYPTION_WRAPPED_KEY_B64 or data.key.enc) and writes unwrapped.key at repo root.
+
+How to fetch key at runtime (example)
+------------------------------------
+- Run the helper before starting the backend so knex can use the unwrapped key via ENCRYPTION_KEY_PATH:
+
+  # from repo root
+  node backend/bin/fetch-kms-key.js
+
+- The helper exits non-zero on error and writes unwrapped.key on success. CI already invokes this script in the encryption integration workflow.
+
+CI notes
+--------
+- Do NOT put real keys in CI. Use simulate provider (ENCRYPTION_KMS_PROVIDER=simulate) which generates ephemeral keys at job time.
+- Example workflow step (already present in .github/workflows/encryption-integration.yml):
+
+  - name: Fetch/unwrap KMS key
+    run: |
+      cd backend
+      node bin/fetch-kms-key.js
+
+- For GCP usage, configure service account credentials securely and provide wrapped ciphertext via ENCRYPTION_WRAPPED_KEY_B64 or an artifact containing data.key.enc.
 
 Runtime integration
 -------------------
