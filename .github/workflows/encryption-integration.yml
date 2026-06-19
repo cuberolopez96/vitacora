@@ -53,4 +53,5 @@ jobs:
           ENCRYPTION_KEY_PATH: ../unwrapped.key
           DB_CONNECTION: ../poc_encrypted.sqlite
         run: |
-          npm test -- tests/integration/sqlcipher.test.js
+          # Use npx jest directly to avoid npm script argument parsing issues
+          npx jest tests/integration/sqlcipher.test.js --runInBand --reporters=default
