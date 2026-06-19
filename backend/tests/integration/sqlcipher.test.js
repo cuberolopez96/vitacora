@@ -16,16 +16,11 @@ test('knex opens SQLCipher encrypted DB when ENCRYPTION_ENABLED and ENCRYPTION_K
 
   const repoRoot = path.resolve(__dirname, '..', '..', '..');
 
-  // Generate and unwrap a key using the KMS simulator (PoC)
-  try {
-    execSync(path.join(repoRoot, 'scripts', 'kms_simulate.sh') + ' generate', { stdio: 'inherit' });
-    execSync(path.join(repoRoot, 'scripts', 'kms_simulate.sh') + ' unwrap', { stdio: 'inherit' });
-  } catch (e) {
-    console.warn('KMS simulate failed; skipping test:', e.message);
-    return;
-  }
-
+  // The CI job prepares and unwraps the key (scripts/kms_simulate.sh). The test requires unwrapped.key to exist.
   const keyPath = path.resolve(repoRoot, 'unwrapped.key');
+  if (!fs.existsSync(keyPath)) {
+    throw new Error('Required unwrapped.key not found. Ensure the CI workflow ran the KMS unwrap step or create unwrapped.key before running this test.');
+  }
   expect(fs.existsSync(keyPath)).toBe(true);
 
   // Create encrypted DB using the PoC sqlcipher script
