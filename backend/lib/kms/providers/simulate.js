@@ -5,14 +5,14 @@ const fs = require('fs');
 // Simulated KMS provider for CI and local testing.
 // It delegates to scripts/kms_simulate.sh which produces unwrapped.key when run with KMS_PASS set.
 
-async function fetchKey() {
+async function fetchKey(opts = {}) {
   // Default locations relative to repo root
   const repoRoot = path.resolve(__dirname, '..', '..', '..');
   const wrapped = path.resolve(repoRoot, 'data.key.enc');
-  const unwrapped = path.resolve(repoRoot, 'unwrapped.key');
+  const outPath = opts.outPath || (process.env.ENCRYPTION_KEY_PATH ? path.resolve(process.env.ENCRYPTION_KEY_PATH) : path.join(require('os').tmpdir(), 'vitacora_unwrapped.key'));
 
-  // If unwrapped.key already exists, return it
-  if (fs.existsSync(unwrapped)) return unwrapped;
+  // If key already exists at outPath, return it
+  if (fs.existsSync(outPath)) return outPath;
 
   // Try to use scripts/kms_simulate.sh to unwrap
   const script = path.resolve(repoRoot, 'scripts', 'kms_simulate.sh');
@@ -24,14 +24,15 @@ async function fetchKey() {
   try {
     // generate data.key/data.key.enc if missing (idempotent)
     execSync(`${script} generate`, { cwd: repoRoot, stdio: 'inherit' });
-    // unwrap using provided pass
-    execSync(`${script} unwrap`, { cwd: repoRoot, env: Object.assign({}, process.env, { KMS_PASS: pass }), stdio: 'inherit' });
+    // unwrap using provided pass; instruct script to write to outPath if supported via KMS_UNWRAP_OUT
+    const env = Object.assign({}, process.env, { KMS_PASS: pass, KMS_UNWRAP_OUT: outPath });
+    execSync(`${script} unwrap`, { cwd: repoRoot, env, stdio: 'inherit' });
   } catch (e) {
     throw new Error('simulate KMS unwrap failed: ' + e.message);
   }
 
-  if (!fs.existsSync(unwrapped)) throw new Error('simulate provider failed to create unwrapped.key');
-  return unwrapped;
+  if (!fs.existsSync(outPath)) throw new Error('simulate provider failed to create unwrapped.key at ' + outPath);
+  return outPath;
 }
 
 module.exports = { fetchKey };

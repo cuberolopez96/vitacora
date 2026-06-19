@@ -9,7 +9,7 @@ const path = require('path');
 // - ENCRYPTION_WRAPPED_KEY_B64 (optional): base64-encoded ciphertext to decrypt. If not provided, will read data.key.enc and treat it as raw ciphertext (binary) and attempt to decrypt.
 // Note: The wrapped ciphertext must have been created by GCP KMS encrypt to be decryptable. For CI, prefer the 'simulate' provider.
 
-async function fetchKey() {
+async function fetchKey(opts = {}) {
   if (!KeyManagementServiceClient) {
     throw new Error("@google-cloud/kms not installed. Run 'npm install @google-cloud/kms' in backend to use GCP provider.");
   }
@@ -31,8 +31,12 @@ async function fetchKey() {
   // Call GCP KMS to decrypt
   const [result] = await client.decrypt({ name: keyName, ciphertext });
   const plaintext = result.plaintext;
-  const outPath = path.resolve(repoRoot, 'unwrapped.key');
-  fs.writeFileSync(outPath, plaintext);
+
+  // Determine outPath: prefer opts.outPath or ENCRYPTION_KEY_PATH, else use OS temp dir
+  const outPath = opts.outPath || (process.env.ENCRYPTION_KEY_PATH ? path.resolve(process.env.ENCRYPTION_KEY_PATH) : path.join(require('os').tmpdir(), 'vitacora_unwrapped.key'));
+
+  // write file with restricted permissions when possible
+  fs.writeFileSync(outPath, plaintext, { mode: 0o600 });
   return outPath;
 }
 
