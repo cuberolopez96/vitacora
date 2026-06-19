@@ -32,16 +32,9 @@ jobs:
           # Ensure SQLite storage dirs exist (both project_root/data and backend/data)
           mkdir -p data backend/data
 
-          # create empty sqlite files so knex/migrations and tests can open them
-          if [ ! -f data/vitacora.sqlite ]; then
-            touch data/vitacora.sqlite
-          fi
-          if [ ! -f backend/data/vitacora.sqlite ]; then
-            touch backend/data/vitacora.sqlite
-          fi
-          if [ ! -f backend/data/test-ci.sqlite ]; then
-            touch backend/data/test-ci.sqlite
-          fi
+          # Do not pre-create empty sqlite files; migrations should create the DB files deterministically.
+          # Ensure SQLite storage dirs exist (both project_root/data and backend/data)
+          mkdir -p data backend/data || true
 
           # Show created files for debugging
           ls -la data || true
@@ -69,10 +62,7 @@ jobs:
           DIR=$(dirname "$DBFILE")
           echo "Creating dir: $DIR"
           mkdir -p "$DIR"
-          if [ ! -f "$DBFILE" ]; then
-            echo "Touching $DBFILE"
-            touch "$DBFILE"
-          fi
+          # Do not create an empty DB file here; migrations will create the DB and schema.
           ls -la "$DIR"
 
       - name: Run migrations
@@ -117,15 +107,12 @@ jobs:
           if [ -z "$DBFILE" ]; then
             echo "DBFILE empty — defaulting to ./data/test-ci.sqlite"
             DBFILE=$(pwd)/backend/data/test-ci.sqlite
-          fi
-          DIR=$(dirname "$DBFILE")
-          echo "Creating dir: $DIR"
-          mkdir -p "$DIR"
-          if [ ! -f "$DBFILE" ]; then
-            echo "Touching $DBFILE"
-            touch "$DBFILE"
-          fi
-          ls -la "$DIR"
+            fi
+            DIR=$(dirname "$DBFILE")
+            echo "Creating dir: $DIR"
+            mkdir -p "$DIR"
+            # Do not create an empty DB file here; migrations will create the DB and schema.
+            ls -la "$DIR"
 
       - name: Run migrations
         working-directory: backend
