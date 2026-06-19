@@ -65,13 +65,13 @@ jobs:
           echo "Listing backups/ artifacts:" || true
           ls -la || true
           echo "Dumping first bytes of encrypted DB:"
-          xxd -l 32 ../poc_encrypted.sqlite || true
+          xxd -l 32 ./poc_encrypted.sqlite || true
           if command -v sqlcipher >/dev/null 2>&1; then
             echo "Attempt to open encrypted DB with sqlcipher CLI"
-            KEY_HEX=$(xxd -p -c 256 ../unwrapped.key)
+            KEY_HEX=$(xxd -p -c 256 ./unwrapped.key)
             echo "PRAGMA key = 'x$KEY_HEX';" > /tmp/verify.sql
             echo "SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;" >> /tmp/verify.sql
-            sqlcipher ../poc_encrypted.sqlite < /tmp/verify.sql || true
+            sqlcipher ./poc_encrypted.sqlite < /tmp/verify.sql || true
           else
             echo "sqlcipher CLI not available on runner"
           fi
