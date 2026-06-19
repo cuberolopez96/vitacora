@@ -37,6 +37,8 @@ jobs:
           chmod +x scripts/*.sh || true
           ./scripts/kms_simulate.sh cleanup || true
           ./scripts/kms_simulate.sh generate
+          # CI uses a test passphrase to unwrap the wrapped key (ephemeral, not stored in repo secrets)
+          export KMS_PASS=test-wrap-pass
           ./scripts/kms_simulate.sh unwrap
 
       - name: Create encrypted PoC DB
