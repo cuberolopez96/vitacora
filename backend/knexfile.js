@@ -70,8 +70,15 @@ module.exports = {
               if (err) return done(err, conn);
               // Optionally verify by running a no-op pragma (cipher_version) if supported
               conn.get("PRAGMA cipher_version;", function (verErr) {
-                // ignore verErr — some sqlite builds won't have cipher_version, it's just a check
-                return done(null, conn);
+                // If cipher_version exists it's a strong signal SQLCipher is present; regardless, attempt a light query to verify the DB can be read with the provided key.
+                conn.get("SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;", function (testErr, row) {
+                  if (testErr) {
+                    // Provide a clear diagnostic for CI logs
+                    const msg = 'SQLCipher verification failed: ' + testErr.message + ' — verify sqlite3 is built with SQLCipher and ENCRYPTION_KEY_PATH/key are correct.';
+                    return done(new Error(msg), conn);
+                  }
+                  return done(null, conn);
+                });
               });
             });
           } catch (e) {
