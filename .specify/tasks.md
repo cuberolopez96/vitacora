@@ -73,6 +73,7 @@ id: api-export
    - responsable: cuberolopez96
    - criterio de aceptación: GET /api/export?format=csv|json devuelve 200 y descarga archivo válido; incluir prueba de integración/E2E que use fixtures/exports/1k-records.json y valide encabezados, esquema y codificación.
    - notas: Implementar streaming CSV/JSON, manejar rangos y filtros; añadir tests E2E.
+   - completed_by: 2026-06-19T13:04:27+02:00
 
 id: docker-compose-minimal
    - título: Crear docker-compose mínimo (app + db)
@@ -184,6 +185,7 @@ id: encryption-at-rest
       3) Pruebas de integración que validen creación de backup cifrado y restauración desde un backup cifrado en un entorno limpio.
       4) Guía de limitaciones para SQLite (ej. SQLCipher) y opciones para MySQL/MariaDB (disk encryption o InnoDB TDE) y pasos de migración.
     - notas: No incluir claves en el repositorio; proporcionar ejemplos de configuración y scripts para generar/usar claves en entornos locales y CI (use KMS in production).
+    - completed_by: 2026-06-19T11:03:00+02:00 (merge commit 820fae7)
 
 id: backup-ui-and-restore
     - título: UI/ops para listar backups y restauración manual
@@ -192,6 +194,7 @@ id: backup-ui-and-restore
     - responsable: cuberolopez96
     - criterio de aceptación: Se puede descargar backup y restaurarlo en entorno limpio siguiendo instrucciones.
     - notas: Endpoint /api/backups y página en frontend/ops/backups.jsx; documentar pasos restore en docs/.
+    - completed_by: 2026-06-19T13:04:27+02:00
 
 ---
 
@@ -204,6 +207,7 @@ id: auth-local-optin
   - responsable: cuberolopez96
   - criterio de aceptación: soporte para activar auth vía .env; cuando está activada, acceso requiere login; usar sesiones basadas en cookie segura (httpOnly, Secure, SameSite=Lax) con storage servidor (session store) o JWT con refresh token si se decide exponer API a terceros. Documentar CSRF protections y política de expiración/refresh.
   - notas: Recomendación inicial: cookie-session + CSRF token (más compatible con navegadores/PWA). Documentar alternativa JWT en RFC si se requiere acceso API de terceros.
+  - completed_by: 2026-06-19T13:04:27+02:00
 
 id: tls-and-reverse-proxy-doc
     - título: Documentar TLS y ejemplo con Caddy (o nginx + certbot)
@@ -212,6 +216,7 @@ id: tls-and-reverse-proxy-doc
     - responsable: cuberolopez96
     - criterio de aceptación: Documentación con docker-compose ejemplo para Caddy y pasos para obtener TLS.
     - notas: docs/tls.md con `docker-compose.caddy.yml` ejemplo; incluir Caddyfile básico.
+    - completed_by: 2026-06-19T13:04:27+02:00
 
 id: env-samples-and-secrets
     - título: Crear .env.sample y notas de manejo de secrets
@@ -220,6 +225,7 @@ id: env-samples-and-secrets
     - responsable: cuberolopez96
     - criterio de aceptación: .env.sample incluido y docs con instrucciones de variables necesarias.
     - notas: Incluir MYSQL_ROOT_PASSWORD, DB_NAME, JWT_SECRET, BACKUP_PATH, etc.
+    - completed_by: 2026-06-19T13:04:27+02:00
 
 ---
 
@@ -232,6 +238,7 @@ id: dockerfiles-and-optimizations
     - responsable: cuberolopez96
     - criterio de aceptación: Dockerfiles para backend/fronted construyen imágenes funcionales y preferiblemente <200MB (si posible).
     - notas: Multi-stage builds, reducir devDependencies y limpiar cache; probar `docker build`.
+    - completed_by: 2026-06-19T13:04:27+02:00
 
 id: docker-compose-prod
     - título: docker-compose producción (Caddy/nginx + app + db + worker)
