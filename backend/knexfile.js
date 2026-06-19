@@ -51,8 +51,21 @@ module.exports = {
         afterCreate: function (conn, done) {
           // conn is a sqlite3 Database object when using sqlite3 driver; run PRAGMA key for SQLCipher if available
           try {
-            // Escape single quotes in key
-            const safeKey = key.replace(/'/g, "''");
+            // If key is raw bytes (hex encoded in PoC), convert to SQLCipher hex notation: prefix with x and pass hex string
+            let safeKey = key;
+            // If key contains non-printable characters, read as Buffer and convert to hex
+            const hasNonPrintable = /[^\x20-\x7E]/.test(safeKey);
+            if (hasNonPrintable) {
+              const buf = Buffer.from(fs.readFileSync(path.resolve(__dirname, '..', process.env.ENCRYPTION_KEY_PATH || process.env.ENCRYPTION_KEY || '')));
+              safeKey = 'x' + buf.toString('hex');
+            } else if (/^[0-9a-fA-F]+$/.test(safeKey) && safeKey.length >= 32) {
+              // If the key looks like hex already, prefix with x
+              safeKey = 'x' + safeKey;
+            } else {
+              // Escape single quotes in textual key
+              safeKey = safeKey.replace(/'/g, "''");
+            }
+
             conn.run(`PRAGMA key = '${safeKey}';`, function (err) {
               if (err) return done(err, conn);
               // Optionally verify by running a no-op pragma (cipher_version) if supported
