@@ -38,7 +38,7 @@ KMS providers (runtime)
 -----------------------
 - This repo implements a pluggable KMS loader at backend/lib/kms. Use ENCRYPTION_KMS_PROVIDER to select a provider.
   - simulate (default for CI/dev): wraps scripts/kms_simulate.sh to generate and unwrap a test key. Useful for CI PoC and local testing.
-  - gcp: GCP KMS provider (backend/lib/kms/providers/gcp.js). Requires installing @google-cloud/kms and setting ENCRYPTION_KMS_KEY_ID. The provider reads a wrapped ciphertext (ENCRYPTION_WRAPPED_KEY_B64 or data.key.enc) and writes unwrapped.key at repo root.
+  - gcp: GCP KMS provider (backend/lib/kms/providers/gcp.js). Requires installing @google-cloud/kms and setting ENCRYPTION_KMS_KEY_ID. The provider reads a wrapped ciphertext (ENCRYPTION_WRAPPED_KEY_B64 or data.key.enc) and writes the unwrapped key to ENCRYPTION_KEY_PATH or a secure temp path (OS temp dir) by default. Do not commit this file.
 
 How to fetch key at runtime (example)
 ------------------------------------
