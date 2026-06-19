@@ -17,7 +17,8 @@ jobs:
       - name: Install system deps (sqlcipher)
         run: |
           sudo apt-get update
-          sudo apt-get install -y sqlcipher openssl dos2unix xxd git build-essential python3
+          # Install sqlcipher runtime + development headers and tools required to build sqlite3 against sqlcipher
+          sudo apt-get install -y sqlcipher libsqlcipher-dev pkg-config openssl dos2unix xxd git build-essential python3
 
       - name: Setup Node
         uses: actions/setup-node@v4
