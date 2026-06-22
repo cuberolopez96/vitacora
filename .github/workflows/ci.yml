@@ -80,9 +80,41 @@ jobs:
         working-directory: backend
         run: npm run migrate
 
-      - name: Run tests
+      - name: Run tests (backend - parallelizable)
         working-directory: backend
-        run: npm test
+        run: |
+          # Run backend tests in parallel where possible; keep --runInBand for CI stability on Windows
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            npm test
+          else
+            npx jest --maxWorkers=50% --reporters=default
+          fi
+
+      - name: Build & cache frontend (if present)
+        run: |
+          if [ -f frontend/package.json ]; then
+            echo "Setting up frontend cache"
+          else
+            echo "No frontend package.json; skipping frontend steps"
+          fi
+
+      - name: Cache frontend node_modules
+        if: ${{ always() && (hashFiles('frontend/package-lock.json') != '') }}
+        uses: actions/cache@v4
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-frontend-npm-${{ hashFiles('frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-frontend-npm-
+
+      - name: Install frontend deps and build (if present)
+        run: |
+          if [ -f frontend/package.json ]; then
+            (cd frontend && npm ci --no-audit --no-fund)
+            (cd frontend && npm run build)
+          else
+            echo "Skipping frontend install/build"
+          fi
 
   export-verification:
     name: Export verification (E2E)
