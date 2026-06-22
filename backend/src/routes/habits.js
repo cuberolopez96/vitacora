@@ -3,10 +3,11 @@ module.exports = async function (fastify, opts) {
   const { randomUUID } = require('crypto');
 
   fastify.post('/habits', async (request, reply) => {
-    const { title, cadence } = request.body || {};
+    const { title, cadence, user_id } = request.body || {};
     if (!title) return reply.status(400).send({ error: 'title required' });
     const id = randomUUID();
-    await knex('habits').insert({ id, title, cadence: cadence || 'daily', created_at: new Date().toISOString() });
+    const uid = user_id || 'user';
+    await knex('habits').insert({ id, user_id: uid, title, cadence: cadence || 'daily', created_at: new Date().toISOString() });
     const habit = await knex('habits').where({ id }).first();
     return reply.status(201).send(habit);
   });
