@@ -42,10 +42,17 @@ module.exports = {
             // Allow overriding the sqlite filename via DB_FILE or DB_CONNECTION env vars.
             const envFile = process.env.DB_FILE || process.env.DB_CONNECTION;
             if (envFile && envFile.length > 0) {
-              // Resolve relative paths against the repository root (one level up from backend)
-              return { filename: path.resolve(__dirname, '..', envFile) };
+              // Prefer resolving paths relative to the backend directory inside containers (/app)
+              const candidate1 = path.resolve(__dirname, envFile);
+              const candidate2 = path.resolve(__dirname, '..', envFile);
+              // If candidate1 exists or candidate2 doesn't, prefer candidate1 so runtime writes inside /app
+              if (fs.existsSync(candidate1) || !fs.existsSync(candidate2)) {
+                return { filename: candidate1 };
+              }
+              return { filename: candidate2 };
             }
-            return { filename: path.resolve(__dirname, '..', 'data', 'vitacora.sqlite') };
+            // default to backend/data/vitacora.sqlite (inside backend directory)
+            return { filename: path.resolve(__dirname, 'data', 'vitacora.sqlite') };
           })(),
     useNullAsDefault: true,
     // If encryption is enabled and using sqlite3/SQLCipher, add a pool.afterCreate hook to set the key on new connections
