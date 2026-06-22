@@ -47,12 +47,21 @@ module.exports = {
               const candidate2 = path.resolve(__dirname, '..', envFile);
               // If candidate1 exists or candidate2 doesn't, prefer candidate1 so runtime writes inside /app
               if (fs.existsSync(candidate1) || !fs.existsSync(candidate2)) {
+                // ensure parent directory exists
+                const dir = path.dirname(candidate1);
+                if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
                 return { filename: candidate1 };
               }
+              // ensure parent directory exists for candidate2
+              const dir2 = path.dirname(candidate2);
+              if (!fs.existsSync(dir2)) fs.mkdirSync(dir2, { recursive: true });
               return { filename: candidate2 };
             }
             // default to backend/data/vitacora.sqlite (inside backend directory)
-            return { filename: path.resolve(__dirname, 'data', 'vitacora.sqlite') };
+            const def = path.resolve(__dirname, 'data', 'vitacora.sqlite');
+            const defDir = path.dirname(def);
+            if (!fs.existsSync(defDir)) fs.mkdirSync(defDir, { recursive: true });
+            return { filename: def };
           })(),
     useNullAsDefault: true,
     // If encryption is enabled and using sqlite3/SQLCipher, add a pool.afterCreate hook to set the key on new connections
