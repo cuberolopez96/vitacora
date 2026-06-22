@@ -7,6 +7,18 @@ exports.up = async function (knex) {
     t.timestamp('created_at').defaultTo(knex.fn.now());
   });
 
+  // seed default user for dev/e2e (id = 'user')
+  try {
+    await knex('users').insert({
+      id: 'user',
+      name: 'Default User',
+      email: 'user@example.com',
+      created_at: new Date().toISOString()
+    });
+  } catch (e) {
+    // ignore if user already exists
+  }
+
   await knex.schema.createTable('habits', (t) => {
     t.string('id').primary();
     t.string('user_id').notNullable();
