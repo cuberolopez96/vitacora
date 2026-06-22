@@ -7,9 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    name: Unit & Integration Tests
-    runs-on: ubuntu-latest
+  build-and-test:
+    name: Build & Test (matrix)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [18, 20]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,11 +21,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ matrix.node }}
+
+      - name: Cache backend node_modules
+        uses: actions/cache@v4
+        with:
+          path: backend/node_modules
+          key: ${{ runner.os }}-backend-npm-${{ hashFiles('backend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-backend-npm-
 
       - name: Install backend deps
         working-directory: backend
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Prepare environment for tests
         run: |
@@ -33,7 +45,6 @@ jobs:
           mkdir -p data backend/data
 
           # Do not pre-create empty sqlite files; migrations should create the DB files deterministically.
-          # Ensure SQLite storage dirs exist (both project_root/data and backend/data)
           mkdir -p data backend/data || true
 
           # Show created files for debugging
@@ -69,9 +80,41 @@ jobs:
         working-directory: backend
         run: npm run migrate
 
-      - name: Run tests
+      - name: Run tests (backend - parallelizable)
         working-directory: backend
-        run: npm test
+        run: |
+          # Run backend tests in parallel where possible; keep --runInBand for CI stability on Windows
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            npm test
+          else
+            npx jest --maxWorkers=50% --reporters=default
+          fi
+
+      - name: Build & cache frontend (if present)
+        run: |
+          if [ -f frontend/package.json ]; then
+            echo "Setting up frontend cache"
+          else
+            echo "No frontend package.json; skipping frontend steps"
+          fi
+
+      - name: Cache frontend node_modules
+        if: ${{ always() && (hashFiles('frontend/package-lock.json') != '') }}
+        uses: actions/cache@v4
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-frontend-npm-${{ hashFiles('frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-frontend-npm-
+
+      - name: Install frontend deps and build (if present)
+        run: |
+          if [ -f frontend/package.json ]; then
+            (cd frontend && npm ci --no-audit --no-fund)
+            (cd frontend && npm run build)
+          else
+            echo "Skipping frontend install/build"
+          fi
 
   export-verification:
     name: Export verification (E2E)
@@ -183,6 +226,53 @@ jobs:
         run: |
           echo export-verification: OK
 
+  smoke:
+    name: Smoke (quick PR feedback)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps (cacheable)
+        uses: actions/cache@v4
+        with:
+          path: backend/node_modules
+          key: smoke-backend-${{ hashFiles('backend/package-lock.json') }}
+          restore-keys: |
+            smoke-backend-
+      - name: Install deps
+        working-directory: backend
+        run: npm ci --no-audit --no-fund
+
+      - name: Run migrations
+        working-directory: backend
+        run: npm run migrate
+
+      - name: Start backend and check health
+        working-directory: backend
+        run: |
+          set -euo pipefail
+          nohup npm start > /tmp/backend.log 2>&1 &
+          echo $! > /tmp/backend.pid || true
+          echo "Waiting for backend to become healthy (max 30s)..."
+          attempt=0
+          max_attempts=6
+          until curl -sf http://localhost:8080/api/healthz >/dev/null 2>&1; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge "$max_attempts" ]; then
+              echo "Backend did not become healthy in time. Tail backend log:" 
+              tail -n 100 /tmp/backend.log || true
+              exit 1
+            fi
+            sleep 5
+          done
+          echo "healthz OK"
+
   image-size:
     name: Image size check
     runs-on: ubuntu-latest
@@ -237,3 +327,24 @@ jobs:
 
           check_image vitacora-backend:ci || exit 1
           check_image vitacora-frontend:ci || exit 1
+
+  integration-sqlcipher:
+    name: Integration tests (SQLCipher image)
+    runs-on: ubuntu-latest
+    needs: [build-and-test, smoke]
+    steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+
+          - name: Pull and run prebuilt SQLCipher image
+            run: |
+              set -euo pipefail
+              IMAGE=ghcr.io/cuberolopez96/vitacora-sqlcipher:node18
+              echo "Attempting to pull prebuilt SQLCipher image: $IMAGE"
+              if docker pull "$IMAGE"; then
+                echo "Image pulled, running integration tests inside container"
+                docker run --rm -v "$PWD":/workspace -w /workspace -e ENCRYPTION_KMS_PROVIDER=simulate "$IMAGE" /bin/bash -lc "cd backend && npm ci --no-audit --no-fund && node bin/fetch-kms-key.js --out /tmp/unwrapped.key && npm run migrate && npm test"
+              else
+                echo "Prebuilt SQLCipher image not available; skipping integration-sqlcipher job"
+              fi
+
