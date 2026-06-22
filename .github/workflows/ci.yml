@@ -194,6 +194,53 @@ jobs:
         run: |
           echo export-verification: OK
 
+  smoke:
+    name: Smoke (quick PR feedback)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend deps (cacheable)
+        uses: actions/cache@v4
+        with:
+          path: backend/node_modules
+          key: smoke-backend-${{ hashFiles('backend/package-lock.json') }}
+          restore-keys: |
+            smoke-backend-
+      - name: Install deps
+        working-directory: backend
+        run: npm ci --no-audit --no-fund
+
+      - name: Run migrations
+        working-directory: backend
+        run: npm run migrate
+
+      - name: Start backend and check health
+        working-directory: backend
+        run: |
+          set -euo pipefail
+          nohup npm start > /tmp/backend.log 2>&1 &
+          echo $! > /tmp/backend.pid || true
+          echo "Waiting for backend to become healthy (max 30s)..."
+          attempt=0
+          max_attempts=6
+          until curl -sf http://localhost:8080/api/healthz >/dev/null 2>&1; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge "$max_attempts" ]; then
+              echo "Backend did not become healthy in time. Tail backend log:" 
+              tail -n 100 /tmp/backend.log || true
+              exit 1
+            fi
+            sleep 5
+          done
+          echo "healthz OK"
+
   image-size:
     name: Image size check
     runs-on: ubuntu-latest
