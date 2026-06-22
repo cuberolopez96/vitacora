@@ -44,3 +44,8 @@ Thumbs.db
 
 # Coverage
 coverage/
+
+# E2E
+/e2e/node_modules
+/e2e/playwright-report
+
