@@ -327,3 +327,24 @@ jobs:
 
           check_image vitacora-backend:ci || exit 1
           check_image vitacora-frontend:ci || exit 1
+
+  integration-sqlcipher:
+    name: Integration tests (SQLCipher image)
+    runs-on: ubuntu-latest
+    needs: [build-and-test, smoke]
+    steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+
+          - name: Pull and run prebuilt SQLCipher image
+            run: |
+              set -euo pipefail
+              IMAGE=ghcr.io/cuberolopez96/vitacora-sqlcipher:node18
+              echo "Attempting to pull prebuilt SQLCipher image: $IMAGE"
+              if docker pull "$IMAGE"; then
+                echo "Image pulled, running integration tests inside container"
+                docker run --rm -v "$PWD":/workspace -w /workspace -e ENCRYPTION_KMS_PROVIDER=simulate "$IMAGE" /bin/bash -lc "cd backend && npm ci --no-audit --no-fund && node bin/fetch-kms-key.js --out /tmp/unwrapped.key && npm run migrate && npm test"
+              else
+                echo "Prebuilt SQLCipher image not available; skipping integration-sqlcipher job"
+              fi
+
