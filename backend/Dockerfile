@@ -25,6 +25,8 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 # Fall back to source if no build output
 COPY --from=builder /app/src ./src
+# Ensure knexfile and config files are available at runtime
+COPY --from=builder /app/knexfile.js ./knexfile.js
 
 EXPOSE 8080
 CMD ["node", "src/server.js"]
