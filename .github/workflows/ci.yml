@@ -7,9 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    name: Unit & Integration Tests
-    runs-on: ubuntu-latest
+  build-and-test:
+    name: Build & Test (matrix)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [18, 20]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,11 +21,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ matrix.node }}
+
+      - name: Cache backend node_modules
+        uses: actions/cache@v4
+        with:
+          path: backend/node_modules
+          key: ${{ runner.os }}-backend-npm-${{ hashFiles('backend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-backend-npm-
 
       - name: Install backend deps
         working-directory: backend
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Prepare environment for tests
         run: |
@@ -33,7 +45,6 @@ jobs:
           mkdir -p data backend/data
 
           # Do not pre-create empty sqlite files; migrations should create the DB files deterministically.
-          # Ensure SQLite storage dirs exist (both project_root/data and backend/data)
           mkdir -p data backend/data || true
 
           # Show created files for debugging
