@@ -9,11 +9,16 @@ test('create habit and mark today', async ({ page, request }) => {
 
   const title = 'E2E Habit ' + Date.now();
   await page.locator('input[placeholder="Nuevo hábito"]').fill(title);
-  await page.click('text=Crear');
-
+  // Click and wait for the POST /api/habits response so backend has the new record
+  const [response] = await Promise.all([
+    page.waitForResponse(resp => resp.url().endsWith('/api/habits') && resp.request().method() === 'POST'),
+    page.click('button:has-text("Crear")')
+  ]);
+  // short delay to allow UI to refresh
+  await page.waitForTimeout(500);
   // Wait for the habit to appear in the list
   const item = page.locator('li', { hasText: title }).first();
-  await expect(item).toBeVisible({ timeout: 5000 });
+  await expect(item).toBeVisible({ timeout: 10000 });
 
   // Click Mark Today (button text: 'Marcar hoy')
   await item.locator('text=Marcar hoy').click();
