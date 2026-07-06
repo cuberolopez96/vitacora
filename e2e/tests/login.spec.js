@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 // Simple connectivity/login smoke test — adapt selectors to your app when ready.
 test('home page responds', async ({ page }) => {
-  const base = process.env.E2E_BASE_URL || 'http://localhost:3000';
+  const base = process.env.E2E_BASE_URL || 'http://localhost:5173';
   const res = await page.goto(base, { waitUntil: 'domcontentloaded' });
   // Ensure the site is reachable
   expect(res && res.ok()).toBeTruthy();
