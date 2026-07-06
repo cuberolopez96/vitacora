@@ -19,9 +19,16 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Create .env from sample if missing
+      - name: Create CI .env and overrides
         run: |
-          if [ -f .env.sample ] && [ ! -f .env ]; then cp .env.sample .env; fi
+          # Start from sample if present to preserve DB and other settings
+          if [ -f .env.sample ]; then cp .env.sample .env; fi
+          # Add CI-specific overrides for auth so E2E can test login flow
+          cat >> .env <<'EOF'
+AUTH_ENABLED=true
+AUTH_STRATEGY=jwt
+JWT_SECRET=ci-secret
+EOF
 
       - name: Start services with Docker Compose
         run: |

@@ -25,8 +25,17 @@ test('login flow via API and access protected route', async ({ request, page }) 
 
   expect(loginRes.ok()).toBeTruthy();
 
-  // Attempt to call protected endpoint using the same request context (cookies or token should be preserved)
-  const exportRes = await request.get(API_BASE + '/me/export');
+  // Determine token vs session behavior
+  const loginBody = await loginRes.json().catch(() => ({}));
+  let exportRes;
+  if (loginBody && loginBody.token) {
+    // JWT strategy — include Authorization header
+    exportRes = await request.get(API_BASE + '/me/export', { headers: { authorization: `Bearer ${loginBody.token}` } });
+  } else {
+    // Cookie/session strategy — request fixture preserves cookies
+    exportRes = await request.get(API_BASE + '/me/export');
+  }
+
   expect(exportRes.ok()).toBeTruthy();
 
   // Optionally, verify response is JSON
