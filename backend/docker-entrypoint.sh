@@ -10,3 +10,4 @@ fi
 
 # Execute the main process
 exec node src/server.js
+
