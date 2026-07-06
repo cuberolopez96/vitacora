@@ -9,6 +9,13 @@ function build(opts = {}) {
 
   // DB plugin (Knex) - attaches knex instance as fastify.knex
   fastify.register(require('./plugins/db'));
+  // Enable CORS for dev/e2e to allow frontend hosted on different port to call API
+  try {
+    fastify.register(require('@fastify/cors'), { origin: true });
+  } catch (e) {
+    // optional dependency; ignore if not installed
+    fastify.log.debug('CORS plugin not available');
+  }
   // Auth plugin (opt-in scaffold) - sets fastify.authEnabled and fastify.verifyAuth
   fastify.register(require('./plugins/auth'));
 

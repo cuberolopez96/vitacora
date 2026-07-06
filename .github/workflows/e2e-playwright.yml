@@ -1,0 +1,65 @@
+name: E2E Playwright
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Create CI .env and overrides
+        run: |
+          # Start from sample if present to preserve DB and other settings
+          if [ -f .env.sample ]; then cp .env.sample .env; fi
+          # Add CI-specific overrides for auth so E2E can test login flow
+          echo "AUTH_ENABLED=true" >> .env
+          echo "AUTH_STRATEGY=jwt" >> .env
+          echo "JWT_SECRET=ci-secret" >> .env
+
+      - name: Start services with Docker Compose
+        run: |
+          docker compose -f docker-compose.dev.yml up -d --build
+
+      - name: Wait for frontend
+        run: |
+          for i in {1..60}; do
+            if curl -fsS http://localhost:5173 >/dev/null 2>&1; then echo "frontend ready" && break; fi
+            sleep 2
+          done
+
+      - name: Install E2E dependencies
+        working-directory: ./e2e
+        run: |
+          npm ci
+          npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        working-directory: ./e2e
+        env:
+          E2E_BASE_URL: http://localhost:5173
+        run: |
+          npx playwright test --reporter=list --reporter=html
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: e2e/playwright-report || e2e/test-results || e2e/test-results/*
+
+      - name: Tear down services
+        if: always()
+        run: |
+          docker compose -f docker-compose.dev.yml down --volumes
